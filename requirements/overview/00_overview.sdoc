@@ -86,6 +86,9 @@ Untrusted Network Domain (UND):
 
 Trusted Network Domain (TND):
     A network domain (or segment) that **does not contain any** of the untrusted attributes listed above.
+
+Vendor:
+    Entity from which the motor carrier procures the relevant device, subsystem, or service, and which is accountable to the motor carrier for that item’s conformance, security, and evidence. The vendor may rely on one or more component suppliers for verification artifacts, test results, and supporting evidence, but the vendor remains the accountable contracting party.
 <<<
 
 [[/SECTION]]
