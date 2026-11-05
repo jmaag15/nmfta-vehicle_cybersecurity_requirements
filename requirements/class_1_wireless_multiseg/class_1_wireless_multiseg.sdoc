@@ -373,18 +373,6 @@ RELATIONS:
   ROLE: Refines
 
 [REQUIREMENT]
-UID: C1-P-030
-STATUS: Draft
-TAGS: NEEDS_WORKING_GROUP_REVIEW
-STATEMENT: >>>
-Class 1 devices SHALL satisfy baseline requirement P-030.
-<<<
-RELATIONS:
-- TYPE: Parent
-  VALUE: P-030
-  ROLE: Refines
-
-[REQUIREMENT]
 UID: C1-PS-010
 STATUS: Draft
 TAGS: NEEDS_WORKING_GROUP_REVIEW
@@ -538,18 +526,6 @@ Class 1 devices SHALL satisfy baseline requirement SCP-040.
 RELATIONS:
 - TYPE: Parent
   VALUE: SCP-040
-  ROLE: Refines
-
-[REQUIREMENT]
-UID: C1-SCP-050
-STATUS: Draft
-TAGS: NEEDS_WORKING_GROUP_REVIEW
-STATEMENT: >>>
-Class 1 devices SHALL satisfy baseline requirement SCP-050.
-<<<
-RELATIONS:
-- TYPE: Parent
-  VALUE: SCP-050
   ROLE: Refines
 
 [REQUIREMENT]

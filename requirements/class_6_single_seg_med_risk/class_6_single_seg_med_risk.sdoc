@@ -114,54 +114,6 @@ RELATIONS:
   ROLE: Refines
 
 [REQUIREMENT]
-UID: C6-AC-060
-STATUS: Draft
-TAGS: NEEDS_WORKING_GROUP_REVIEW
-STATEMENT: >>>
-Class 6 devices SHALL satisfy baseline requirement AC-060.
-<<<
-RELATIONS:
-- TYPE: Parent
-  VALUE: AC-060
-  ROLE: Refines
-
-[REQUIREMENT]
-UID: C6-AC-061
-STATUS: Draft
-TAGS: NEEDS_WORKING_GROUP_REVIEW
-STATEMENT: >>>
-Class 6 devices SHALL satisfy baseline requirement AC-061.
-<<<
-RELATIONS:
-- TYPE: Parent
-  VALUE: AC-061
-  ROLE: Refines
-
-[REQUIREMENT]
-UID: C6-AC-062
-STATUS: Draft
-TAGS: NEEDS_WORKING_GROUP_REVIEW
-STATEMENT: >>>
-Class 6 devices SHALL satisfy baseline requirement AC-062.
-<<<
-RELATIONS:
-- TYPE: Parent
-  VALUE: AC-062
-  ROLE: Refines
-
-[REQUIREMENT]
-UID: C6-AC-063
-STATUS: Draft
-TAGS: NEEDS_WORKING_GROUP_REVIEW
-STATEMENT: >>>
-Class 6 devices SHALL satisfy baseline requirement AC-063.
-<<<
-RELATIONS:
-- TYPE: Parent
-  VALUE: AC-063
-  ROLE: Refines
-
-[REQUIREMENT]
 UID: C6-AC-070
 STATUS: Draft
 TAGS: NEEDS_WORKING_GROUP_REVIEW
@@ -378,18 +330,6 @@ RELATIONS:
   ROLE: Refines
 
 [REQUIREMENT]
-UID: C6-P-030
-STATUS: Draft
-TAGS: NEEDS_WORKING_GROUP_REVIEW
-STATEMENT: >>>
-Class 6 devices SHALL satisfy baseline requirement P-030.
-<<<
-RELATIONS:
-- TYPE: Parent
-  VALUE: P-030
-  ROLE: Refines
-
-[REQUIREMENT]
 UID: C6-PS-010
 STATUS: Draft
 TAGS: NEEDS_WORKING_GROUP_REVIEW
@@ -543,30 +483,6 @@ Class 6 devices SHALL satisfy baseline requirement SCP-040.
 RELATIONS:
 - TYPE: Parent
   VALUE: SCP-040
-  ROLE: Refines
-
-[REQUIREMENT]
-UID: C6-SCP-050
-STATUS: Draft
-TAGS: NEEDS_WORKING_GROUP_REVIEW
-STATEMENT: >>>
-Class 6 devices SHALL satisfy baseline requirement SCP-050.
-<<<
-RELATIONS:
-- TYPE: Parent
-  VALUE: SCP-050
-  ROLE: Refines
-
-[REQUIREMENT]
-UID: C6-SCP-060
-STATUS: Draft
-TAGS: NEEDS_WORKING_GROUP_REVIEW
-STATEMENT: >>>
-Class 6 devices SHALL satisfy baseline requirement SCP-060.
-<<<
-RELATIONS:
-- TYPE: Parent
-  VALUE: SCP-060
   ROLE: Refines
 
 [REQUIREMENT]
