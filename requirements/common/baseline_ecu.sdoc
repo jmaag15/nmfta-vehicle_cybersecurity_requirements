@@ -808,7 +808,7 @@ STATEMENT: >>>
 The vendor shall provide interfaces to their backend using the Open Telematics API -- enabling carriers to have failover to other providers to avoid interruptions due to single point of failure in provider telematics services.
 <<<
 COMMENT: >>>
-Customer data is business critical to the carriers, failover is needed for this service
+Telematics is business critical to the carriers, failover is needed for this service
 <<<
 PUB_REFS: >>>
 CAIQ BCR-01.1 Does your organization have a plan or framework for business continuity management or disaster recovery management?
