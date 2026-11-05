@@ -11,7 +11,7 @@ TITLE: Baseline Security Requirements
 STATEMENT: >>>
 In this section the reader will find baseline ECU cybersecurity requirements that apply to one of more ECU classes.
 
-They were derived (e.g. abstracted from) the original requirements created in the TSRM. The latest version of TSRM can be found at https://github.com/nmfta-repo/nmfta-telematics_security_requirements
+They were derived (i.e. abstracted from) the original requirements created in the TSRM. The latest version of TSRM can be found at https://github.com/nmfta-repo/nmfta-telematics_security_requirements
 <<<
 
 [REQUIREMENT]
