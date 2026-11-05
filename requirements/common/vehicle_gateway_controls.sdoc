@@ -222,7 +222,7 @@ Test to confirm that for each permitted TND->UND transport, translation or encap
 
 AND
 
-For non-masking: Inspection of a 3rd party implementation review report or a demonstration by the vendor that asserts the use of cryptographic protections for the confidentiality and integrity of all external communications channels. The cryptographic protections must be industry standard.
+For non-masking: Inspection of a 3rd party implementation review report or a demonstration by the OEM that asserts the use of cryptographic protections for the confidentiality and integrity of all external communications channels. The cryptographic protections must be industry standard.
 <<<
 
 [REQUIREMENT]
@@ -254,7 +254,7 @@ PUB_REFS: >>>
 * Example *Intrusive Services*, SAE J3138.
 <<<
 VERIFICATION: >>>
-Inspection of vendor documentation to confirm that TND functionality prevented when the mode switch is set to disabled includes all the known critical and dangerous features of the vehicle TND in question. E.g. that diagnostics and influence of vehicle uptime are prevented when the mode switch is set to disabled.
+Inspection of OEM documentation to confirm that TND functionality prevented when the mode switch is set to disabled includes all the known critical and dangerous features of the vehicle TND in question. E.g. that diagnostics and influence of vehicle uptime are prevented when the mode switch is set to disabled.
 <<<
 
 [REQUIREMENT]
@@ -265,7 +265,7 @@ STATEMENT: >>>
 The device SHALL prevent all data loss and/or corruption of information in the bidirectional *UND* <-> *TND* operation, unless with explicit configuration for rate limiting (AGW-F-006) or translation (AGW-F-002).
 <<<
 VERIFICATION: >>>
-Inspection of vendor reliability testing reports to confirm that the device will not cause data loss or corruption at sustained loads of expected maximum traffic on TND and UND.
+Inspection of OEM reliability testing reports to confirm that the device will not cause data loss or corruption at sustained loads of expected maximum traffic on TND and UND.
 <<<
 
 [REQUIREMENT]
@@ -328,7 +328,7 @@ STATEMENT: >>>
 The device SHALL be scoped to sufficient detail to preserve network domain performance guarantees in *TND*.
 <<<
 VERIFICATION: >>>
-Inspection of vendor reliability testing reports to confirm that the device will not cause loss of performance in TND.
+Inspection of OEM reliability testing reports to confirm that the device will not cause loss of performance in TND.
 
 AND
 
@@ -395,7 +395,7 @@ STATEMENT: >>>
 The device SHALL indicate to all domains that it is not performing normal operations.
 <<<
 VERIFICATION: >>>
-Inspection of vendor documentation to confirm that there is traffic sent on TND and UND when the mode switch is set to allow.
+Inspection of OEM documentation to confirm that there is traffic sent on TND and UND when the mode switch is set to allow.
 
 AND
 
@@ -422,7 +422,7 @@ STATEMENT: >>>
 The device SHALL process and move CAN frames quickly enough to preserve performance on all network domains.
 <<<
 VERIFICATION: >>>
-Inspection of vendor reports to confirm that performance is sufficient for all vehicle TNDs.
+Inspection of OEM reports to confirm that performance is sufficient for all vehicle TNDs.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -443,7 +443,7 @@ CRITICALITY: High
 TITLE: Won't Drop Frames
 STATEMENT: The device SHALL NOT drop CAN frames in its bidirectional *UND* <-> *TND* operation, unless with explicit configuration for rate limiting or translating.
 VERIFICATION: >>>
-Inspection of vendor reports to confirm that CAN frames are, by design, not dropped.
+Inspection of OEM reports to confirm that CAN frames are, by design, not dropped.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -456,11 +456,11 @@ CRITICALITY: High
 TITLE: No Priority Inversion
 STATEMENT: The device SHALL schedule egress frames according to the CAN arbitration ID priority in its bidirectional *UND* <-> *TND* operation, to prevent priority inversion.
 VERIFICATION: >>>
-Inspection of vendor documentation to confirm that device's implementation follows the rules for CAN arbitration ID priority and the prevention of priority inversion.
+Inspection of OEM documentation to confirm that device's implementation follows the rules for CAN arbitration ID priority and the prevention of priority inversion.
 
 AND
 
-Inspection of vendor report detailing the use of a test environment that simulates a bidirectional UND <-> TND operation, with different arbitration ID priorities. Where, with the test environment set up, a CAN analyzer or other monitoring tool was used to observe the device's scheduling of egress frames and verify that it followed the correct arbitration ID priority: that higher-priority frames are always transmitted before lower-priority frames. The test methodoly described in the report should be comparable to the following:
+Inspection of OEM report detailing the use of a test environment that simulates a bidirectional UND <-> TND operation, with different arbitration ID priorities. Where, with the test environment set up, a CAN analyzer or other monitoring tool was used to observe the device's scheduling of egress frames and verify that it followed the correct arbitration ID priority: that higher-priority frames are always transmitted before lower-priority frames. The test methodoly described in the report should be comparable to the following:
 
 ::
 
@@ -567,11 +567,11 @@ CRITICALITY: High
 TITLE: Preserves Ordering
 STATEMENT: The device SHALL preserve ordering egress frames with respect to their ingress order within an equivalence class of CAN arbitration ID priorities, to prevent out-of-order delivery.
 VERIFICATION: >>>
-Inspection of vendor documentation to confirm that the device is NOT implemented using SocketCAN -- SocketCAN drivers will randomly switch order of frames at both the same arbitration ID and among varied arbitration IDs.
+Inspection of OEM documentation to confirm that the device is NOT implemented using SocketCAN -- SocketCAN drivers will randomly switch order of frames at both the same arbitration ID and among varied arbitration IDs.
 
 AND
 
-Inspection of vendor report detailing the use of a test environment that simulates a bidirectional UND <-> TND operation, with multiple nodes transmitting frames with different arbitration ID priorities. Where, with the test environment set up, a CAN analyzer or other monitoring tool was used to observe the device's scheduling of egress frames and verify that it followed the correct ordering within the same arbitration IDs: that frames are sent in the order received within the same arbitration ID.
+Inspection of OEM report detailing the use of a test environment that simulates a bidirectional UND <-> TND operation, with multiple nodes transmitting frames with different arbitration ID priorities. Where, with the test environment set up, a CAN analyzer or other monitoring tool was used to observe the device's scheduling of egress frames and verify that it followed the correct ordering within the same arbitration IDs: that frames are sent in the order received within the same arbitration ID.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -584,7 +584,7 @@ CRITICALITY: High
 TITLE: FIFO but Also Priority
 STATEMENT: The device SHALL schedule egress for in-order send but not across CAN arbitration ID priorities.
 VERIFICATION: >>>
-Inspection of vendor report detailing the use of a test environment that simulates a bidirectional UND <-> TND operation, with multiple nodes transmitting frames with different arbitration ID priorities. Where, with the test environment set up, a CAN analyzer or other monitoring tool was used to observe the device's scheduling of egress frames and verify that it followed the correct ordering within the same arbitration IDs: that frames are sent in the order received within the same arbitration ID but that also priority of arbitration IDs are respected.
+Inspection of OEM report detailing the use of a test environment that simulates a bidirectional UND <-> TND operation, with multiple nodes transmitting frames with different arbitration ID priorities. Where, with the test environment set up, a CAN analyzer or other monitoring tool was used to observe the device's scheduling of egress frames and verify that it followed the correct ordering within the same arbitration IDs: that frames are sent in the order received within the same arbitration ID but that also priority of arbitration IDs are respected.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -597,7 +597,7 @@ CRITICALITY: Medium
 TITLE: Preserves Jitter
 STATEMENT: The device SHALL have ingress-to-egress latency variability (jitter) low enough to not affect the *TND* network domain performance requirements in the worst case.
 VERIFICATION: >>>
-Inspection of vendor report detailing the use of a test environment that simulates a network load to measure jitter of the device. Where, with the test environment set up, a CAN analyzer or other monitoring tool was used to observe the device's scheduling of egress frames and verify the jitter introduced. The test methodoly described in the report should be comparable to the following:
+Inspection of OEM report detailing the use of a test environment that simulates a network load to measure jitter of the device. Where, with the test environment set up, a CAN analyzer or other monitoring tool was used to observe the device's scheduling of egress frames and verify the jitter introduced. The test methodoly described in the report should be comparable to the following:
 
 ::
 
@@ -727,7 +727,7 @@ PUB_REFS: >>>
 * https://canislabs.com/downloads/2020-02-14-White-Paper-CAN-Security.pdf section 2.3 for a description of adaptive frame spoofing attack.
 <<<
 VERIFICATION: >>>
-Inspection of vendor documentation to confirm that the (gateway) device is not implemented using direct-wired transceivers from TND to UND. In all other cases the delays introduced by the gateway will implicitly prevent Adaptive Frame Spoofing Attacks.
+Inspection of OEM documentation to confirm that the (gateway) device is not implemented using direct-wired transceivers from TND to UND. In all other cases the delays introduced by the gateway will implicitly prevent Adaptive Frame Spoofing Attacks.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -743,11 +743,11 @@ PUB_REFS: >>>
 * https://canislabs.com/downloads/2020-02-14-White-Paper-CAN-Security.pdf section 2.4 for a description of error passive spoofing attack.
 <<<
 VERIFICATION: >>>
-Inspection of vendor documentation to confirm that the (gateway) device does not permit direct (GPIO-like) control of the TND CAN bus from UND (e.g. anything other than direct-wiring). In all other cases the separation of UND and TND will preclude the possibility of an error passive attack step.
+Inspection of OEM documentation to confirm that the (gateway) device does not permit direct (GPIO-like) control of the TND CAN bus from UND (e.g. anything other than direct-wiring). In all other cases the separation of UND and TND will preclude the possibility of an error passive attack step.
 
 AND
 
-Inspection of vendor documentation to confirm that the (gateway) device is not implemented with SoC-integrated CAN controllers whose pins can be multiplexed with GPIOs. OR To confirm that the device software has very high security assurance to guarantee that malicious software could never control the GPIOs or the pinmuxing.
+Inspection of OEM documentation to confirm that the (gateway) device is not implemented with SoC-integrated CAN controllers whose pins can be multiplexed with GPIOs. OR To confirm that the device software has very high security assurance to guarantee that malicious software could never control the GPIOs or the pinmuxing.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -763,11 +763,11 @@ PUB_REFS: >>>
 * https://canislabs.com/downloads/2020-02-14-White-Paper-CAN-Security.pdf section 2.5 for a description of the double receive attack.
 <<<
 VERIFICATION: >>>
-Inspection of vendor documentation to confirm that the (gateway) device does not permit direct (GPIO-like) control of the TND CAN bus from UND (e.g. anything other than direct-wiring). In all other cases the separation of UND and TND will preclude the possibility of a double receive attack.
+Inspection of OEM documentation to confirm that the (gateway) device does not permit direct (GPIO-like) control of the TND CAN bus from UND (e.g. anything other than direct-wiring). In all other cases the separation of UND and TND will preclude the possibility of a double receive attack.
 
 AND
 
-Inspection of vendor documentation to confirm that the (gateway) device is not implemented with SoC-integrated CAN controllers whose pins can be multiplexed with GPIOs. OR To confirm that the device software has very high security assurance to guarantee that malicious software could never control the GPIOs or the pinmuxing.
+Inspection of OEM documentation to confirm that the (gateway) device is not implemented with SoC-integrated CAN controllers whose pins can be multiplexed with GPIOs. OR To confirm that the device software has very high security assurance to guarantee that malicious software could never control the GPIOs or the pinmuxing.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -783,11 +783,11 @@ PUB_REFS: >>>
 * https://canislabs.com/downloads/2020-02-14-White-Paper-CAN-Security.pdf section 2.6 for a description of the bus-off attack.
 <<<
 VERIFICATION: >>>
-Inspection of vendor documentation to confirm that the (gateway) device does not permit direct (GPIO-like) control of the TND CAN bus from UND (e.g. anything other than direct-wiring). In all other cases the separation of UND and TND will preclude the possibility of a bus off attack.
+Inspection of OEM documentation to confirm that the (gateway) device does not permit direct (GPIO-like) control of the TND CAN bus from UND (e.g. anything other than direct-wiring). In all other cases the separation of UND and TND will preclude the possibility of a bus off attack.
 
 AND
 
-Inspection of vendor documentation to confirm that the (gateway) device is not implemented with SoC-integrated CAN controllers whose pins can be multiplexed with GPIOs. OR To confirm that the device software has very high security assurance to guarantee that malicious software could never control the GPIOs or the pinmuxing.
+Inspection of OEM documentation to confirm that the (gateway) device is not implemented with SoC-integrated CAN controllers whose pins can be multiplexed with GPIOs. OR To confirm that the device software has very high security assurance to guarantee that malicious software could never control the GPIOs or the pinmuxing.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -803,11 +803,11 @@ PUB_REFS: >>>
 * https://canislabs.com/downloads/2020-02-14-White-Paper-CAN-Security.pdf section 2.7 for a description of the freeze doom loop attack.
 <<<
 VERIFICATION: >>>
-Inspection of vendor documentation to confirm that the (gateway) device does not permit direct (GPIO-like) control of the TND CAN bus from UND (e.g. anything other than direct-wiring). In all other cases the separation of UND and TND will preclude the possibility of a freeze doom loop attack
+Inspection of OEM documentation to confirm that the (gateway) device does not permit direct (GPIO-like) control of the TND CAN bus from UND (e.g. anything other than direct-wiring). In all other cases the separation of UND and TND will preclude the possibility of a freeze doom loop attack
 
 AND
 
-Inspection of vendor documentation to confirm that the (gateway) device is not implemented with SoC-integrated CAN controllers whose pins can be multiplexed with GPIOs. OR To confirm that the device software has very high security assurance to guarantee that malicious software could never control the GPIOs or the pinmuxing.
+Inspection of OEM documentation to confirm that the (gateway) device is not implemented with SoC-integrated CAN controllers whose pins can be multiplexed with GPIOs. OR To confirm that the device software has very high security assurance to guarantee that malicious software could never control the GPIOs or the pinmuxing.
 
 AND
 
@@ -830,11 +830,11 @@ PUB_REFS: >>>
 * https://kentindell.github.io/2021/07/15/janus-attack/ for a description of the Janus Attack
 <<<
 VERIFICATION: >>>
-Inspection of vendor report to confirm that all devices on TND have been tested to demonstrate the same configured CAN sampling point.
+Inspection of OEM report to confirm that all devices on TND have been tested to demonstrate the same configured CAN sampling point.
 
 AND
 
-Inspection of vendor report to confirm that all original devices on UND have been tested to demonstrate the same configured CAN sampling point.
+Inspection of OEM report to confirm that all original devices on UND have been tested to demonstrate the same configured CAN sampling point.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -892,7 +892,7 @@ PUB_REFS: >>>
 * https://www.aut.upt.ro/~bgroza/Papers/j1939.pdf and https://doi.org/10.4271/02-14-03-0026 for a description of the address claim attack.
 <<<
 VERIFICATION: >>>
-Inspection of vendor documentation to confirm that mitigations against address claim attacks are implemented on all of the interfaces of the device.
+Inspection of OEM documentation to confirm that mitigations against address claim attacks are implemented on all of the interfaces of the device.
 <<<
 RELATIONS:
 - TYPE: Parent
@@ -960,3 +960,4 @@ STATEMENT: These devices SHALL NOT encapsulate information as it is transported 
 [[/SECTION]]
 
 [[/SECTION]]
+

@@ -21,7 +21,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor's system shall record event and system logs
+The OEM's system shall record event and system logs
 <<<
 COMMENT: >>>
 Ideally the logs are immutable,  backed up, and retained for a certain period of time
@@ -38,7 +38,7 @@ e. Review and update the event types selected for logging [Assignment: organizat
 CTIA CCTPID 4.7 Audit Log
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing locations where audit logs are stored and the types of events logged.
+Inspection of OEM-supplied documentation detailing locations where audit logs are stored and the types of events logged.
 <<<
 
 [REQUIREMENT]
@@ -50,7 +50,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-Vendor devices will implement least privilege for the memory spaces of processes handling protected data. i.e. data in-use, of the categories of sensitive protected data above, or shall be segmented from software components which do not handle such data. Acceptable segmentations include Mandatory Filesystem Access Controls and Mandatory Volatile Memory Access Controls.
+OEM devices will implement least privilege for the memory spaces of processes handling protected data. i.e. data in-use, of the categories of sensitive protected data above, or shall be segmented from software components which do not handle such data. Acceptable segmentations include Mandatory Filesystem Access Controls and Mandatory Volatile Memory Access Controls.
 <<<
 COMMENT: >>>
 e.g. a Linux system with MAC configured to deny access to the processes dealing with protected data and also denying debugger access to the memory space of those processes.
@@ -79,7 +79,7 @@ Identify critical physical and electronic file types and data to protect while a
 UL 1376 3.9 Least privilege: Systems must implement 'least privilege', or utilize hardware based features to protect sensitive code and data
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied design documentation detailing the privilege separation of the device. Ensure that 1) a Mandatory Access Control scheme is employed 2) there are separate domains/users/roles (whichever is applicable to the MAC) for dealing with the sensitive information (vendor defined, see SCP-030) and finally 3) accounts for running system tasks (e.g. crond, portmap, systemd) are not in the separate domains/users/roles for dealing with sensitive information.
+Inspection of OEM-supplied design documentation detailing the privilege separation of the device. Ensure that 1) a Mandatory Access Control scheme is employed 2) there are separate domains/users/roles (whichever is applicable to the MAC) for dealing with the sensitive information (OEM defined, see SCP-030) and finally 3) accounts for running system tasks (e.g. crond, portmap, systemd) are not in the separate domains/users/roles for dealing with sensitive information.
 <<<
 
 [REQUIREMENT]
@@ -91,7 +91,7 @@ CRITICALITY: >>>
 High
 <<<
 STATEMENT: >>>
-All actions taken by the vendor's telematics system that are capable of supporting access controls shall be configured such that each user account or process/service account are assigned only the minimal privileges required to perform the specific, intended, actions of the user or process/service account.
+All actions taken by the OEM's telematics system that are capable of supporting access controls shall be configured such that each user account or process/service account are assigned only the minimal privileges required to perform the specific, intended, actions of the user or process/service account.
 <<<
 COMMENT: >>>
 This principle underpins system security
@@ -110,7 +110,7 @@ CTIA CCTPID 5.17 Design-In Features “designed to isolate critical functions fr
 OWASP E5 – Identity Management
 <<<
 VERIFICATION: >>>
-Inspection of vendor documentation or a demonstration by the vendor that details how software privileges are assigned in vendor systems. Ensure that principles of least privilege are met.
+Inspection of OEM documentation or a demonstration by the OEM that details how software privileges are assigned in OEM systems. Ensure that principles of least privilege are met.
 <<<
 
 [REQUIREMENT]
@@ -122,12 +122,12 @@ CRITICALITY: >>>
 High
 <<<
 STATEMENT: >>>
-The vendor's system shall employ cryptographic authentication to prevent unauthorized access to telematics systems and data.
+The OEM's system shall employ cryptographic authentication to prevent unauthorized access to telematics systems and data.
 <<<
 COMMENT: >>>
 Identity management is critical
 
-e.g. PINs, single-sign on with carrier’s identity provider (SAML or other), vendor managed identity provider (SAML or other)
+e.g. PINs, single-sign on with carrier’s identity provider (SAML or other), OEM managed identity provider (SAML or other)
 <<<
 PUB_REFS: >>>
 NIST 800-53 r5 AC-6 – LEAST PRIVILEGE
@@ -143,7 +143,7 @@ UL 1376 4.1 Sensitive services require authentication: Sensitive services must r
 UL 1376 6.3 Authentication for remote communications: Connections to remote services must implement cryptographic authentication
 <<<
 VERIFICATION: >>>
-Inspection of vendor documentation detailing the methods used to authenticate users. Ensure that an acceptable method of authentication is available for all components which be interfaced-to by carrier staff and systems.
+Inspection of OEM documentation detailing the methods used to authenticate users. Ensure that an acceptable method of authentication is available for all components which be interfaced-to by carrier staff and systems.
 
 In the case of single-sign-on delegation, ensure that your (carrier) system requirements are met with respect to security assertions (e.g. SAML is supported).
 <<<
@@ -157,7 +157,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor shall identify all instances where the telematics system includes actions that cannot support access authentication and/or execute with elevated privileges
+The OEM shall identify all instances where the telematics system includes actions that cannot support access authentication and/or execute with elevated privileges
 <<<
 PUB_REFS: >>>
 NIST 800-53 r5 AC-14 – PERMITTED ACTIONS WITHOUT IDENTIFICATION OR AUTHENTICATION
@@ -168,7 +168,7 @@ NIST 800-53 r5 AC-6 – LEAST PRIVILEGE
 Employ the principle of least privilege, allowing only authorized accesses for users (or processes acting on behalf of users) that are necessary to accomplish assigned organizational tasks.
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation listing system actions and interfaces that do not require authentication. Ensure that the list is short, that each entry in the list is acceptable to you (the carrier), and there is a justifiable reason for no-authentication on each item in the list.
+Inspection of OEM-supplied documentation listing system actions and interfaces that do not require authentication. Ensure that the list is short, that each entry in the list is acceptable to you (the carrier), and there is a justifiable reason for no-authentication on each item in the list.
 <<<
 
 [REQUIREMENT]
@@ -191,7 +191,7 @@ a. Identify [Assignment: organization-defined user actions] that can be performe
 b. Document and provide supporting rationale in the security plan for the system, user actions not requiring identification or authentication.
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation listing system actions and interfaces that do not require authentication. Ensure that no information leaks are possible from these unauthenticated actions.
+Inspection of OEM-supplied documentation listing system actions and interfaces that do not require authentication. Ensure that no information leaks are possible from these unauthenticated actions.
 <<<
 
 [REQUIREMENT]
@@ -211,7 +211,7 @@ a. Establish and document usage restrictions, configuration/connection requireme
 b. Authorize each type of remote access to the system prior to allowing such connections
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation listing the methods of remote access and the actions that can be performed. Ensure that the remote access methods and actions are justifiable and also ensure that all remote methods require authentication (i.e. ensure none of them are listed in vendor documentation for AC-040)
+Inspection of OEM-supplied documentation listing the methods of remote access and the actions that can be performed. Ensure that the remote access methods and actions are justifiable and also ensure that all remote methods require authentication (i.e. ensure none of them are listed in OEM documentation for AC-040)
 <<<
 
 [REQUIREMENT]
@@ -223,7 +223,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-For all components of the system, the vendor shall provide a listing of all wireless communication interfaces to the system and specify how the interfaces can be configured and/or disabled.
+For all components of the system, the OEM shall provide a listing of all wireless communication interfaces to the system and specify how the interfaces can be configured and/or disabled.
 <<<
 COMMENT: >>>
 e.g. Bluetooth, cellular, satellite, Wi-Fi hotspot, Wi-Fi client, infrared, NFC, RFID
@@ -234,7 +234,7 @@ a. Establish configuration requirements, connection requirements, and implementa
 b. Authorize each type of wireless access to the system prior to allowing such connections.
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing what wireless communications hardware is present, which wireless communications methods can be disabled, and how wireless communications enablement or disablement is managed.
+Inspection of OEM-supplied documentation detailing what wireless communications hardware is present, which wireless communications methods can be disabled, and how wireless communications enablement or disablement is managed.
 <<<
 
 [REQUIREMENT]
@@ -246,7 +246,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor shall not use any deprecated encryption+authentication on any Wi-Fi interface of the device. At the time of drafting this includes WEP, WPS or open/none.
+The OEM shall not use any deprecated encryption+authentication on any Wi-Fi interface of the device. At the time of drafting this includes WEP, WPS or open/none.
 <<<
 PUB_REFS: >>>
 FMCSA GDL 39 Only use WPA2 authentication / encryption. Never use WEP, WPS, or “open” Wi-Fi.
@@ -266,7 +266,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor shall implement, for all Bluetooth interfaces,  pairing that must be specifically allowed by physical controls on the device and be time-limited. Furthermore, pairing will not use legacy pairing or passkey entry.
+The OEM shall implement, for all Bluetooth interfaces,  pairing that must be specifically allowed by physical controls on the device and be time-limited. Furthermore, pairing will not use legacy pairing or passkey entry.
 <<<
 PUB_REFS: >>>
 FMCSA GDL 44 Make sure Bluetooth devices support and use Secure Simple Pairing (SSP) rather than legacy pairing.
@@ -289,7 +289,7 @@ STATEMENT: >>>
 Any and all software or firmware implementing wireless interface encrytion+authentication (those satisfying AC-061 and AC-062 above) will be prepared for future deprecation of methods. i.e. That software/firmware is upgradable.
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation confirming upgradability of the software implementing encryption+authentication of wireless interfaces.
+Inspection of OEM-supplied documentation confirming upgradability of the software implementing encryption+authentication of wireless interfaces.
 <<<
 
 [REQUIREMENT]
@@ -301,7 +301,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-Authentication attempts to the vendor’s devices and backends shall be rate-limited to an industry accepted rate.
+Authentication attempts to the OEM’s devices and backends shall be rate-limited to an industry accepted rate.
 <<<
 PUB_REFS: >>>
 NIST 800-53 r5 AC-7 - UNSUCCESSFUL LOGON ATTEMPTS
@@ -314,7 +314,7 @@ CTIA CCTPID 5.2 Password Management Test
 UL 1376 2.8 Brute force protection: Implement protection against brute force attacks
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing the methods used to enforce rate limiting.
+Inspection of OEM-supplied documentation detailing the methods used to enforce rate limiting.
 <<<
 
 [REQUIREMENT]
@@ -341,7 +341,7 @@ FMCSA GDL 40 Always use a complex, unique password per device.
 FMCSA GDL 43 Always use a complex, unique password per device.
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing the local authentication and how the unique credential is generated. Ensure that the generation of this credential cannot be guessed from public information.
+Inspection of OEM-supplied documentation detailing the local authentication and how the unique credential is generated. Ensure that the generation of this credential cannot be guessed from public information.
 <<<
 
 [REQUIREMENT]
@@ -353,7 +353,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-All components of the vendor's system shall be configured to utilize the principle of least functionality and use only the services necessary for secure operations of the system. Additionally, customers should have the option of disabling any features they do not want or do not need by having unnecessary services’ executables removed or at least disabled such that their execution (by even superuser) is not possible in deployed systems.
+All components of the OEM's system shall be configured to utilize the principle of least functionality and use only the services necessary for secure operations of the system. Additionally, customers should have the option of disabling any features they do not want or do not need by having unnecessary services’ executables removed or at least disabled such that their execution (by even superuser) is not possible in deployed systems.
 <<<
 COMMENT: >>>
 E.g. this is particularly true of unauthenticated or unencrypted transport services (which would not satisfy protected communication requirements above) such as File Transfer Protocol, telnet, Short Messaging Service, etc.
@@ -376,7 +376,7 @@ UL 1376 3.3 Unwanted functionality can be disabled: Customer access to disable u
 UL 1376 3.6 Unwanted / Unnecessary features removed: Unwanted / unnecessary features are removed
 <<<
 VERIFICATION: >>>
-Inspection of vendor documentation asserting that unnecessary software or services are not present or disabled on the device.
+Inspection of OEM documentation asserting that unnecessary software or services are not present or disabled on the device.
 <<<
 
 [REQUIREMENT]
@@ -388,7 +388,7 @@ CRITICALITY: >>>
 High
 <<<
 STATEMENT: >>>
-The vendor’s devices shall have all services used for troubleshooting disabled or properly protected from unauthorized access and use.
+The OEM’s devices shall have all services used for troubleshooting disabled or properly protected from unauthorized access and use.
 <<<
 COMMENT: >>>
 Deploying with test or debug facilities enabled is egregious
@@ -403,7 +403,7 @@ FMCSA GDL 54 Disable unnecessary debugging interfaces in production.
 FMCSA GDL 55 Authenticate debugging and diagnostic interfaces.
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing all services (listening ports or outbound connections) available on deployed devices.
+Inspection of OEM-supplied documentation detailing all services (listening ports or outbound connections) available on deployed devices.
 
 Ensure that none of the services available are without authentication (see AC-030) and furthermore that any troubleshooting functionality is ideally disabled, or at least the service available requires unique credentials for authorization of that feature.
 <<<
@@ -417,7 +417,7 @@ CRITICALITY: >>>
 High
 <<<
 STATEMENT: >>>
-Vendor ensures that any and all interfaces used for testing or debug are unavailable in production builds of the devices
+OEM ensures that any and all interfaces used for testing or debug are unavailable in production builds of the devices
 <<<
 COMMENT: >>>
 Deploying with test or debug facilities enabled is egregious.
@@ -444,7 +444,7 @@ UL 1376 3.1 Protect communication and debug ports: Communication and debug ports
 UL 1376 4.4 No direct execution of commands / scripts: No direct execution of scripts / commands using system interfaces and or user-facing components
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing all service (listening ports or outbound connections) available on deployed devices.
+Inspection of OEM-supplied documentation detailing all service (listening ports or outbound connections) available on deployed devices.
 
 Ensure that there are no services for test or debug active in the device. Ideally, look for assurances that any test or debug executables cannot be run on the device.
 <<<
@@ -458,7 +458,7 @@ CRITICALITY: >>>
 High
 <<<
 STATEMENT: >>>
-The vendors’ devices shall have a default system configuration that ensures security ‘out of the box’. In other words, the default configuration should be the most-secure and any additional features should be disabled by default and have their security implications communicated in documentation.
+The OEMs’ devices shall have a default system configuration that ensures security ‘out of the box’. In other words, the default configuration should be the most-secure and any additional features should be disabled by default and have their security implications communicated in documentation.
 <<<
 COMMENT: >>>
 Sufficient customer guidance should be provided to allow for that customer to understand the risks associated with enabling any insecure features of the device.
@@ -467,7 +467,7 @@ PUB_REFS: >>>
 UL 1376 3.2 Systems configured to secure defaults: Systems must be configured to secure defaults
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation confirming that a) all device configuration options have their security tradeoffs documented and that b) the device’s default configuration is the most-secure.
+Inspection of OEM-supplied documentation confirming that a) all device configuration options have their security tradeoffs documented and that b) the device’s default configuration is the most-secure.
 <<<
 
 [REQUIREMENT]
@@ -479,7 +479,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-All remote hosts of the vendor's system shall be configured to uniquely identify and authenticate all other remote hosts of the system and/or any other interfacing systems.
+All remote hosts of the OEM's system shall be configured to uniquely identify and authenticate all other remote hosts of the system and/or any other interfacing systems.
 <<<
 COMMENT: >>>
 e.g. that a remote system authenticate the other remote parties by referring to the unique identifiers using mutually authenticated TLS
@@ -489,7 +489,7 @@ NIST 800-53 r5 IA-3 – DEVICE IDENTIFICATION AND AUTHENTICATION
 Uniquely identify and authenticate [Assignment: organization-defined devices and/or types of devices] before establishing a [Selection (one or more): local; remote; network] connection.
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing how devices and components are uniquely identified.
+Inspection of OEM-supplied documentation detailing how devices and components are uniquely identified.
 
 Ensure that interfacing systems can query and/or inspect these unique identifiers.
 <<<
@@ -503,7 +503,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-Any authenticators (unique identification) for devices used in vendor’s systems shall be uncorrelated to any and all public information about the device, e.g. lot number, product number, serial number MAC address are all unacceptable inputs to device identifiers.
+Any authenticators (unique identification) for devices used in OEM’s systems shall be uncorrelated to any and all public information about the device, e.g. lot number, product number, serial number MAC address are all unacceptable inputs to device identifiers.
 
 Where public information is any information that is visible (externally or internally) on the device or discoverable by searches based on that visible information.
 <<<
@@ -512,7 +512,7 @@ NIST 800-53 r5 IA-3 – DEVICE IDENTIFICATION AND AUTHENTICATION
 Uniquely identify and authenticate [Assignment: organization-defined devices and/or types of devices] before establishing a [Selection (one or more): local; remote; network] connection.
 <<<
 VERIFICATION: >>>
-Inspection of vendor documentation detailing the inputs to the authenticator generation process per device. Ensure that no input is information that can be easily-guessed from simple facts about the device.
+Inspection of OEM documentation detailing the inputs to the authenticator generation process per device. Ensure that no input is information that can be easily-guessed from simple facts about the device.
 <<<
 
 [REQUIREMENT]
@@ -524,7 +524,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-Cryptographic modules used in the vendors system shall be compliant with Federal Information Processing Standards (FIPS) 140-2: Level 1.
+Cryptographic modules used in the OEM's system shall be compliant with Federal Information Processing Standards (FIPS) 140-2: Level 1.
 <<<
 COMMENT: >>>
 e.g.
@@ -542,7 +542,7 @@ UL 1376 2.4 Industry-standard cryptography: Industry standard cryptographic algo
 UL 1376 2.5 RNG with sufficient entropy: Random number generation must ensure sufficient entropy
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing their procurement requirements for cryptographic modules.
+Inspection of OEM-supplied documentation detailing their procurement requirements for cryptographic modules.
 
 Ensure that their procurement processes require that all cryptographic modules are FIPS 140-2 compliant.
 <<<
@@ -556,7 +556,7 @@ CRITICALITY: >>>
 High
 <<<
 STATEMENT: >>>
-The vendor shall have a documented incident response plan (IRP) in place which provides the carriers with a point of contact for components used within their telematics system
+The OEM shall have a documented incident response plan (IRP) in place which provides the carriers with a point of contact for components used within their telematics system
 <<<
 COMMENT: >>>
 TSPs must demonstrate this level of maturity to be trusted with business critical functions
@@ -584,9 +584,9 @@ e. Protect the incident response plan from unauthorized disclosure and modificat
 FMCSA GDL 14 Employ an incident response process.
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing the vendor’s incident response process.
+Inspection of OEM-supplied documentation detailing the OEM’s incident response process.
 
-Ensure that it documents the methods that can be used to notify the vendor of a security incident.
+Ensure that it documents the methods that can be used to notify the OEM of a security incident.
 <<<
 
 [REQUIREMENT]
@@ -598,11 +598,11 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor shall have procedures in place to ensure that components outside of the carrier’s direct control are not updated or modified without prior coordination and approval by an organization-defined individual or role
+The OEM shall have procedures in place to ensure that components outside of the carrier’s direct control are not updated or modified without prior coordination and approval by an organization-defined individual or role
 <<<
 PUB_REFS: >>>
 NIST 800-53 r5 MA-2 – CONTROLLED MAINTENANCE
-a. Schedule, document, and review records of maintenance, repair, and replacement on system components in accordance with manufacturer or vendor specifications and/or organizational requirements;
+a. Schedule, document, and review records of maintenance, repair, and replacement on system components in accordance with manufacturer or OEM specifications and/or organizational requirements;
 b. Approve and monitor all maintenance activities, whether performed on site or remotely and whether the system or system components are serviced on site or removed to another location;
 c. Require that [Assignment: organization-defined personnel or roles] explicitly approve the removal of the system or system components from organizational facilities for off-site maintenance, repair, or replacement;
 d. Sanitize equipment to remove the following information from associated media prior to removal from organizational facilities for off-site maintenance, repair, or replacement: [Assignment: organization-defined information];
@@ -610,7 +610,7 @@ e. Check all potentially impacted controls to verify that the controls are still
 f. Include the following information in organizational maintenance records: [Assignment: organization-defined information].
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing their maintenance/release process.
+Inspection of OEM-supplied documentation detailing their maintenance/release process.
 
 Ensure that there is a process where you (the carrier) are contacted and coordinated-with before the systems upon which you rely undergo maintenance procedures.
 <<<
@@ -624,7 +624,7 @@ CRITICALITY: >>>
 High
 <<<
 STATEMENT: >>>
-The vendor shall have procedures in place to test backup restoration processes of their own systems and their own facilities on at least an annual basis.
+The OEM shall have procedures in place to test backup restoration processes of their own systems and their own facilities on at least an annual basis.
 <<<
 COMMENT: >>>
 TSPs must demonstrate this level of maturity to be trusted with business critical functions
@@ -641,7 +641,7 @@ Test backup information [Assignment: organization-defined frequency] to verify m
 CAIQ BCR-11.7 Do you test your backup or redundancy mechanisms at least annually?
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing backup and restore procedures.
+Inspection of OEM-supplied documentation detailing backup and restore procedures.
 <<<
 
 [REQUIREMENT]
@@ -653,7 +653,7 @@ CRITICALITY: >>>
 High
 <<<
 STATEMENT: >>>
-The vendor must have a disposal of goods policy which covers the management of all computer equipment and storage media dealing with customer information including but not limited to PII and customer business operations data.
+The OEM must have a disposal of goods policy which covers the management of all computer equipment and storage media dealing with customer information including but not limited to PII and customer business operations data.
 <<<
 PUB_REFS: >>>
 ISO 27001 A.8.3.2 Disposal of Media
@@ -661,7 +661,7 @@ ISO 27001 A.8.3.2 Disposal of Media
 NIST 800-88 R1
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing their disposal of goods procedures; confirm the presence of specific mention of handling of their customer's information.
+Inspection of OEM-supplied documentation detailing their disposal of goods procedures; confirm the presence of specific mention of handling of their customer's information.
 <<<
 
 [REQUIREMENT]
@@ -673,7 +673,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor's disposal of goods policy must forbid disposal in skips, dumps or landfills until it has been processed to purge or clear previously stored information.
+The OEM's disposal of goods policy must forbid disposal in skips, dumps or landfills until it has been processed to purge or clear previously stored information.
 <<<
 PUB_REFS: >>>
 ISO 27001 A.8.3.2 Disposal of Media
@@ -681,7 +681,7 @@ ISO 27001 A.8.3.2 Disposal of Media
 NIST 800-88 R1
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing their disposal of goods procedures; confirm that disposal of systems in skips or landfills is not allowed unless the systems have been purged or cleared.
+Inspection of OEM-supplied documentation detailing their disposal of goods procedures; confirm that disposal of systems in skips or landfills is not allowed unless the systems have been purged or cleared.
 <<<
 
 [REQUIREMENT]
@@ -693,13 +693,13 @@ CRITICALITY: >>>
 Low
 <<<
 STATEMENT: >>>
-The vendor's processes to remove previously stored information must include acceptable processes for magnetic media, solid-state media, printers, scanners, laptops, smartphones, server and desktop computers.
+The OEM's processes to remove previously stored information must include acceptable processes for magnetic media, solid-state media, printers, scanners, laptops, smartphones, server and desktop computers.
 <<<
 PUB_REFS: >>>
 NIST 800-88 R1 Appendix A -- Minimum Sanitization Recommendations
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing their disposal of goods procedures; confirm that there are procedures that cover all of magnetic media, solid-state media, printers, scanners, laptops, smartphones, server and desktop computers
+Inspection of OEM-supplied documentation detailing their disposal of goods procedures; confirm that there are procedures that cover all of magnetic media, solid-state media, printers, scanners, laptops, smartphones, server and desktop computers
 <<<
 
 [REQUIREMENT]
@@ -711,13 +711,13 @@ CRITICALITY: >>>
 High
 <<<
 STATEMENT: >>>
-Vendors must provide manual backup/override capabilities to their safety related services to ensure that any failure of the device does not result in a safety issue.
+OEMs must provide manual backup/override capabilities to their safety related services to ensure that any failure of the device does not result in a safety issue.
 <<<
 PUB_REFS: >>>
 UL 1376 4.3 Manual back-up / override for safety critical operations: Manual backup/override must be provided for safety related services
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing the system’s safety related services and the manual backup/override associated with them. Test the manual override capabilities to confirm their functionality.
+Inspection of OEM-supplied documentation detailing the system’s safety related services and the manual backup/override associated with them. Test the manual override capabilities to confirm their functionality.
 <<<
 
 [REQUIREMENT]
@@ -729,7 +729,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor shall have a System Security Plan (SSP) which details a clear and concise understanding of authorization boundaries of the telematics system.
+The OEM shall have a System Security Plan (SSP) which details a clear and concise understanding of authorization boundaries of the telematics system.
 <<<
 PUB_REFS: >>>
 NIST 800-53 r5 PL-2 - SECURITY AND PRIVACY PLANS
@@ -757,7 +757,7 @@ d. Update the plans to address changes to the system and environment of operatio
 e. Protect the plans from unauthorized disclosure and modification.
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied SSP document that details the authorization boundaries of telematics system.
+Inspection of OEM-supplied SSP document that details the authorization boundaries of telematics system.
 
 Ensure that the document details which entity has responsibility for each component of the system, the system baseline and security posture within the boundaries.
 <<<
@@ -771,7 +771,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor shall have a documented Information Security Architecture (ISA) for the telematics system.
+The OEM shall have a documented Information Security Architecture (ISA) for the telematics system.
 <<<
 PUB_REFS: >>>
 NIST 800-53 r5 PL-8 - SECURITY AND PRIVACY ARCHITECTURES
@@ -786,7 +786,7 @@ b. Review and update the architectures [Assignment: organization-defined frequen
 c. Reflect planned architecture changes in security and privacy plans, Concept of Operations (CONOPS), criticality analysis, organizational procedures, and procurements and acquisitions.
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied ISA documentation.
+Inspection of OEM-supplied ISA documentation.
 
 Ensure that the ISA document at a minimum includes:
 Approach to confidentiality, integrity, and availability protections
@@ -807,7 +807,7 @@ CRITICALITY: >>>
 High
 <<<
 STATEMENT: >>>
-The vendor shall provide interfaces to their backend using the Open Telematics API -- enabling carriers to have failover to other providers to avoid interruptions due to single point of failure in provider telematics services.
+The OEM shall provide interfaces to their backend using the Open Telematics API -- enabling carriers to have failover to other providers to avoid interruptions due to single point of failure in provider telematics services.
 <<<
 COMMENT: >>>
 Telematics is business critical to the carriers, failover is needed for this service
@@ -818,7 +818,7 @@ CAIQ BCR-01.1 Does your organization have a plan or framework for business conti
 CAIQ BCR-01.6 Do you provide a tenant-triggered failover option?
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing the interfaces (APIs) offered by the vendor.
+Inspection of OEM-supplied documentation detailing the interfaces (APIs) offered by the OEM.
 
 Ensure that your (carrier) systems can failover to other providers with the same interfaces (APIs).
 <<<
@@ -832,7 +832,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor shall have personnel security policies & procedures, position risk categorization, personnel screening, personnel termination, personnel transfer, access agreements and third-party personnel security.
+The OEM shall have personnel security policies & procedures, position risk categorization, personnel screening, personnel termination, personnel transfer, access agreements and third-party personnel security.
 <<<
 PUB_REFS: >>>
 NIST 800-53 r5 PS-1 - POLICY AND PROCEDURES
@@ -860,7 +860,7 @@ d. Require external providers to notify [Assignment: organization-defined person
 e. Monitor provider compliance with personnel security requirements.
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documents detailing their personal security policies & procedures.
+Inspection of OEM-supplied documents detailing their personal security policies & procedures.
 <<<
 
 [REQUIREMENT]
@@ -872,7 +872,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-Vendor shall have risk assessments conducted at an industry accepted rate. Resulting risk assessment documentation should include all components and the overall system that is within the vendor's control. The rate suggested is twice per product release; both at product design and at integration phases
+OEM shall have risk assessments conducted at an industry accepted rate. Resulting risk assessment documentation should include all components and the overall system that is within the OEM's control. The rate suggested is twice per product release; both at product design and at integration phases
 <<<
 PUB_REFS: >>>
 NIST 800-53 r5 RA-3 – RISK ASSESSMENT
@@ -891,7 +891,7 @@ f. Update the risk assessment [Assignment: organization-defined frequency] or wh
 FMCSA GDL 1 Conduct architectural analysis and/or threat modeling during system design
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation stating their previous and planned risk assessment dates and detailing the documentation requirements of their risk assessments.
+Inspection of OEM-supplied documentation stating their previous and planned risk assessment dates and detailing the documentation requirements of their risk assessments.
 <<<
 
 [REQUIREMENT]
@@ -903,7 +903,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor shall use the results of risk assessments to influence systems development and processes.
+The OEM shall use the results of risk assessments to influence systems development and processes.
 <<<
 PUB_REFS: >>>
 NIST 800-53 r5 RA-3 – RISK ASSESSMENT
@@ -924,7 +924,7 @@ CAIQ GRM-08.1 Do risk assessment results include updates to security policies, p
 FMCSA GDL 1 Conduct architectural analysis and/or threat modeling during system design
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied statement of the use of risk assessments in influencing the ongoing development of their products.
+Inspection of OEM-supplied statement of the use of risk assessments in influencing the ongoing development of their products.
 <<<
 
 [REQUIREMENT]
@@ -936,7 +936,7 @@ CRITICALITY: >>>
 High
 <<<
 STATEMENT: >>>
-The vendor shall have an Information Security Management Plan (ISMP).
+The OEM shall have an Information Security Management Plan (ISMP).
 <<<
 COMMENT: >>>
 Sometimes referred to as ISMS as in ISO/IEC 2700.
@@ -997,7 +997,7 @@ CAIQ GRM-04.2 Do you review your Information Security Management Program (ISMP) 
 ISO/IEC 27001 ISMS
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing their ISMP/ISMS.
+Inspection of OEM-supplied documentation detailing their ISMP/ISMS.
 
 Note that an ISMP is broad and includes aspects which are covered by other requirements in this document. In cases where there is both a requirement here and in the ISMP, ensure that the requirement in this document is satisfied over what is stated in an ISMP.
 <<<
@@ -1011,7 +1011,7 @@ CRITICALITY: >>>
 High
 <<<
 STATEMENT: >>>
-The vendor shall have penetration testing performed, to an industry accepted best practice, at an industry accepted pace.
+The OEM shall have penetration testing performed, to an industry accepted best practice, at an industry accepted pace.
 
 Penetration testing can be performed by teams internal to the TSP; industry best practice is to have external pentesting performed periodically also.
 <<<
@@ -1033,7 +1033,7 @@ CAIQ AAC-02.3 Do you conduct application penetration tests of your cloud infrast
 FMCSA GDL 3  Perform adversarial testing before a product is finalized
 <<<
 VERIFICATION: >>>
-Inspection of 3rd party documentation or a demonstration by the vendor that asserts the dates of penetration tests.
+Inspection of 3rd party documentation or a demonstration by the OEM that asserts the dates of penetration tests.
 
 Note that due to the sensitive nature of these reports, you (carriers) should be prepared to enter into NDAs to review these documents.
 <<<
@@ -1047,7 +1047,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-Vendor shall have Security Testing and Evaluation (ST&E) of the system and/or components that includes all results of the security testing and evaluation, including discovered vulnerabilities and a plan/process to mitigate discovered vulnerabilities or weaknesses in the system.
+OEM shall have Security Testing and Evaluation (ST&E) of the system and/or components that includes all results of the security testing and evaluation, including discovered vulnerabilities and a plan/process to mitigate discovered vulnerabilities or weaknesses in the system.
 <<<
 PUB_REFS: >>>
 NIST 800-53 r5 SA-11 – DEVELOPER TESTING AND EVALUATION
@@ -1060,7 +1060,7 @@ d. Implement a verifiable flaw remediation process; and
 e. Correct flaws identified during testing and evaluation.
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing their product release and quality controls.
+Inspection of OEM-supplied documentation detailing their product release and quality controls.
 
 Ensure that the product release process includes ST&E steps and that these feed-back into product development.
 <<<
@@ -1074,7 +1074,7 @@ CRITICALITY: >>>
 Low
 <<<
 STATEMENT: >>>
-The vendor shall perform due diligence to ensure its suppliers also meet the vendor's security requirements
+The OEM shall perform due diligence to ensure its suppliers also meet the OEM's security requirements
 <<<
 PUB_REFS: >>>
 NIST 800-53 r5 SR-6 - SUPPLIER ASSESSMENTS AND REVIEWS
@@ -1083,7 +1083,7 @@ Assess and review the supply chain-related risks associated with suppliers or co
 FMCSA GDL 6 Perform your own security due diligence, which involves but is not limited to ensuring that third-party devices in the supply chain meet your basic security requirements.
 <<<
 VERIFICATION: >>>
-Inspection of vendor documentation detailing supplier review and acceptance processes and criteria.
+Inspection of OEM documentation detailing supplier review and acceptance processes and criteria.
 <<<
 
 [REQUIREMENT]
@@ -1095,7 +1095,7 @@ CRITICALITY: >>>
 High
 <<<
 STATEMENT: >>>
-Cryptographic keys used in the vendors’ systems must be generated, stored and managed according to industry best practice.
+Cryptographic keys used in the OEMs’ systems must be generated, stored and managed according to industry best practice.
 <<<
 PUB_REFS: >>>
 UL 1376 2.6 Industry best practice key management: Cryptographic keys must be managed to industry best practice
@@ -1103,7 +1103,7 @@ UL 1376 2.6 Industry best practice key management: Cryptographic keys must be ma
 NIST 800-57
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing the adherence to industry best practices.
+Inspection of OEM-supplied documentation detailing the adherence to industry best practices.
 <<<
 
 [REQUIREMENT]
@@ -1143,7 +1143,7 @@ UL 1376 6.1 Communications robust against replay and MITM attacks: Security sens
 UL 1376 6.4 Secure defaults and downgrade prevention: Security protocols must implement secure defaults, and prevent downgrade attacks
 <<<
 VERIFICATION: >>>
-Inspection of a 3rd party implementation review report or a demonstration by the vendor that asserts the use of cryptographic protections for the confidentiality and integrity of all external communications channels. The cryptographic protections must be industry standard.
+Inspection of a 3rd party implementation review report or a demonstration by the OEM that asserts the use of cryptographic protections for the confidentiality and integrity of all external communications channels. The cryptographic protections must be industry standard.
 
 Ensure that any implementations of TLS clients are not still susceptible to replay and MiTM attacks.
 
@@ -1165,7 +1165,7 @@ PUB_REFS: >>>
 NIST Special Publication 800-133 - Recommendation for Cryptographic Key Generation
 <<<
 VERIFICATION: >>>
-Inspection of vendor design documentation detailing the creation use and distribution of identities, keys and shared secrets. Ensure that these are segmented in deployed systems such that a compromise of one piece of information in turn compromises a limited number of deployed devices.
+Inspection of OEM design documentation detailing the creation use and distribution of identities, keys and shared secrets. Ensure that these are segmented in deployed systems such that a compromise of one piece of information in turn compromises a limited number of deployed devices.
 <<<
 
 [REQUIREMENT]
@@ -1177,7 +1177,7 @@ CRITICALITY: >>>
 High
 <<<
 STATEMENT: >>>
-Measures will be taken by vendors to protect the confidentiality of any information at rest on the devices that could be interpreted as Sensitive and/or Personally Identifiable Information. This sensitive information is defined in SCP-030 where ‘at rest’ is understood to mean any state where the data is in a non-volatile storage medium, e.g. eMMC not RAM.
+Measures will be taken by OEMs to protect the confidentiality of any information at rest on the devices that could be interpreted as Sensitive and/or Personally Identifiable Information. This sensitive information is defined in SCP-030 where ‘at rest’ is understood to mean any state where the data is in a non-volatile storage medium, e.g. eMMC not RAM.
 <<<
 COMMENT: >>>
 Failing to adequately protect PII can incur large fines
@@ -1203,7 +1203,7 @@ OWASP E4 – Securing Sensitive Information
 UL 1376 3.8 Logs or errors do not expose sensitive data: Logging and error messages must not expose sensitive data without authentication
 <<<
 VERIFICATION: >>>
-Inspection of a 3rd party implementation review report or a demonstration by the vendor that asserts the use of cryptographic confidentiality protections on storage of sensitive data (class defined by vendor, see SCP-030). The protections must be industry standard and keys must be managed to protect them from leaks as well. (rationale: cryptography must be validated by experts in the subject)
+Inspection of a 3rd party implementation review report or a demonstration by the OEM that asserts the use of cryptographic confidentiality protections on storage of sensitive data (class defined by OEM, see SCP-030). The protections must be industry standard and keys must be managed to protect them from leaks as well. (rationale: cryptography must be validated by experts in the subject)
 <<<
 
 [REQUIREMENT]
@@ -1215,12 +1215,12 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-Vendors will supply documentation detailing what data is and is not protected at rest by cryptography.
+OEMs will supply documentation detailing what data is and is not protected at rest by cryptography.
 
-Vendors are encouraged to expand the list of categories of data which will be protected on-device.
+OEMs are encouraged to expand the list of categories of data which will be protected on-device.
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation describing what data is protected at rest by cryptography. Ensure that the types of data that put your business at risk are protected.
+Inspection of OEM-supplied documentation describing what data is protected at rest by cryptography. Ensure that the types of data that put your business at risk are protected.
 <<<
 
 [REQUIREMENT]
@@ -1252,7 +1252,7 @@ Produce, control, and distribute asymmetric cryptographic keys using [Selection:
 NIST Special Publication 800-133 - Recommendation for Cryptographic Key Generation
 <<<
 VERIFICATION: >>>
-Inspection of vendor documentation detailing the inputs to the cryptographic key generation process per device. Ensure that no input is information that can be easily-guessed from simple facts about the device.
+Inspection of OEM documentation detailing the inputs to the cryptographic key generation process per device. Ensure that no input is information that can be easily-guessed from simple facts about the device.
 <<<
 
 [REQUIREMENT]
@@ -1285,7 +1285,7 @@ Identify critical data, and implement cryptographic mechanisms (e.g., encryption
 CAIQ IVS-09.4 Do you have the ability to logically segment or encrypt customer data such that data may be produced for a single tenant only, without inadvertently accessing another tenant's data?
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied design documentation or a demonstration by the vendor that details  backend data storage and access. Ensure that either design aspects such as storage instances are per-customer or the cryptographic confidentiality protections are used to ensure one customer instance cannot read data from another. NB: Some or multiple may apply.
+Inspection of OEM-supplied design documentation or a demonstration by the OEM that details  backend data storage and access. Ensure that either design aspects such as storage instances are per-customer or the cryptographic confidentiality protections are used to ensure one customer instance cannot read data from another. NB: Some or multiple may apply.
 <<<
 
 [REQUIREMENT]
@@ -1297,7 +1297,7 @@ CRITICALITY: >>>
 High
 <<<
 STATEMENT: >>>
-The vendor shall enforce controls integrated into the telematics device to limit the possible commands and data transmitted to the vehicle network.
+The OEM shall enforce controls integrated into the telematics device to limit the possible commands and data transmitted to the vehicle network.
 <<<
 COMMENT: >>>
 Vehicle network protection is paramount
@@ -1314,7 +1314,7 @@ FMCSA GDL 27 Limit telematics units' access to the CAN bus, and whitelist the CA
 FMCSA GDL 37 It is recommended to isolate safety-critical ECUs on their own CAN bus, with some sort of gateway between them and other ECUs
 <<<
 VERIFICATION: >>>
-Inspection of 3rd party implementation review or a demonstration by the vendor that asserts that there are protections in place which limit what data can be sent from the telematics device to the vehicle network. Ensure that the protections are ‘layered’ (follow defense-in-depth) so that the compromise of software leading to sending vehicle network data cannot also bypass the protections.
+Inspection of 3rd party implementation review or a demonstration by the OEM that asserts that there are protections in place which limit what data can be sent from the telematics device to the vehicle network. Ensure that the protections are ‘layered’ (follow defense-in-depth) so that the compromise of software leading to sending vehicle network data cannot also bypass the protections.
 <<<
 
 [REQUIREMENT]
@@ -1326,13 +1326,13 @@ CRITICALITY: >>>
 High
 <<<
 STATEMENT: >>>
-The vendor's system shall implement protection of communications sessions against attacks including session hijacking and traffic manipulation. Where a session is understood to mean a time-limited authenticated login with the cloud/back-end.
+The OEM's system shall implement protection of communications sessions against attacks including session hijacking and traffic manipulation. Where a session is understood to mean a time-limited authenticated login with the cloud/back-end.
 
 Sessions shall be invalidated at logout.
 
 Sessions must be randomized and uniquely identified.
 
-Protections must be implemented to restrict certificate authorities to a short (maximum 3) list of those expected by the vendor, i.e. secure communications must implement certificate pinning to a short whitelist of certificate authorities.
+Protections must be implemented to restrict certificate authorities to a short (maximum 3) list of those expected by the OEM, i.e. secure communications must implement certificate pinning to a short whitelist of certificate authorities.
 
 Certificate pinning shall be implemented on all telematics device to server communications (e.g. telematics gateways or IVGs). Administrative ‘backend’ systems may be exempt from this requirement to allow for stream inspection by enterprise intrusion detection systems.
 <<<
@@ -1359,9 +1359,9 @@ CAIQ DSI-03.2 Do you utilize open encryption methodologies any time your infrast
 CTIA CCTPID 4.8 Encryption of Data in Transit
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing the session management mechanism employed in vendor systems.
+Inspection of OEM-supplied documentation detailing the session management mechanism employed in OEM systems.
 
-Ensure that certificate pinning is in use in communication path between telematics device and vendor’s infrastructure.
+Ensure that certificate pinning is in use in communication path between telematics device and OEM’s infrastructure.
 
 Ensure compliance with NIST 800-53 r5 control SC-23.
 <<<
@@ -1375,7 +1375,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor shall implement checks for expired certificates and ensure the ability to remove trust in any given root certificate authority from their systems and devices PKI implementations.
+The OEM shall implement checks for expired certificates and ensure the ability to remove trust in any given root certificate authority from their systems and devices PKI implementations.
 <<<
 PUB_REFS: >>>
 FMCSA GDL 51 Check whether keys have expired or been revoked.
@@ -1395,7 +1395,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendors’ systems shall implement protection of remote communication sessions by implementation of an inactivity timer that disconnects / de-authenticates the user after no more than 5 minutes of inactivity.
+The OEMs’ systems shall implement protection of remote communication sessions by implementation of an inactivity timer that disconnects / de-authenticates the user after no more than 5 minutes of inactivity.
 <<<
 PUB_REFS: >>>
 UL 1376 4.5 Sensitive services implement session management: System management services accessible over wireless and IP interfaces must implement session management to limit multiple sessions, and ensure on-going authentication
@@ -1413,7 +1413,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor's system shall separate execution domains and/or processes (i.e. process isolation within both the telematics device and back-end system and between the serial communications in the telematics device and the interface to the vehicle network)
+The OEM's system shall separate execution domains and/or processes (i.e. process isolation within both the telematics device and back-end system and between the serial communications in the telematics device and the interface to the vehicle network)
 <<<
 PUB_REFS: >>>
 NIST 800-53 r5 SC-39 - PROCESS ISOLATION
@@ -1423,7 +1423,7 @@ NIST 800-53 r5 SC-39 (2) - PROCESS ISOLATION | SEPARATE EXECUTION DOMAIN PER THR
 Maintain a separate execution domain for each thread in [Assignment: organization defined multi-threaded processing].
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing the software architecture.
+Inspection of OEM-supplied documentation detailing the software architecture.
 <<<
 
 [REQUIREMENT]
@@ -1435,7 +1435,7 @@ CRITICALITY: >>>
 High
 <<<
 STATEMENT: >>>
-The vendor’s system shall provide a means to download unstructured customer data in an industry-standard format (Open Telematics API). This download will occur over secured communication protocols.
+The OEM’s system shall provide a means to download unstructured customer data in an industry-standard format (Open Telematics API). This download will occur over secured communication protocols.
 <<<
 COMMENT: >>>
 Telematics is business critical and failover is required
@@ -1446,7 +1446,7 @@ PUB_REFS: >>>
 CAIQ IPY-02.1 Is unstructured customer data available on request in an industry-standard format (e.g., .doc, .xls, or .pdf)?
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing the interfaces (APIs) offered by the vendor.
+Inspection of OEM-supplied documentation detailing the interfaces (APIs) offered by the OEM.
 
 Ensure that there is an interface (API) such that you (carrier) can download all data in an unstructured format.
 <<<
@@ -1460,7 +1460,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor’s software shall not contain any credentials that are shared among other copies of software; e.g. the software cannot contain hardcoded API keys or API passwords
+The OEM’s software shall not contain any credentials that are shared among other copies of software; e.g. the software cannot contain hardcoded API keys or API passwords
 <<<
 PUB_REFS: >>>
 OWASP ASVS Service Authentication Requirements 2.10.4
@@ -1475,7 +1475,7 @@ FMCSA GDL 48 Use a unique, complex password on each device, vehicle, or applicat
 OWASP E4 – Securing Sensitive Information
 <<<
 VERIFICATION: >>>
-Inspection of 3rd party documentation or a demonstration by the vendor that asserts the absence of any hard-coded API keys in the client software. E.g. proof that any and all information from the backend is inaccessible without both valid user credentials and any client identifiers such as API keys.
+Inspection of 3rd party documentation or a demonstration by the OEM that asserts the absence of any hard-coded API keys in the client software. E.g. proof that any and all information from the backend is inaccessible without both valid user credentials and any client identifiers such as API keys.
 <<<
 
 [REQUIREMENT]
@@ -1487,7 +1487,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-Vendors shall limit hardware support for deprecated or insecure communications protocols. This includes those with known vulnerabilities.
+OEMs shall limit hardware support for deprecated or insecure communications protocols. This includes those with known vulnerabilities.
 <<<
 PUB_REFS: >>>
 FMCSA GDL 23 Follow best practices for securing cellular or satellite interfaces.
@@ -1497,7 +1497,7 @@ FMCSA GDL 24 Don’t support 2G on cellular modems unless operationally necessar
 FMCSA GDL 25 Assume satellite communication channels have unknown security vulnerabilities and might become compromised at any time.
 <<<
 VERIFICATION: >>>
-Inspection of vendor documentation confirming secured configuration of any wireless and or satellite interfaces. Confirm especially that there are no downgrades of communications protocols possible.
+Inspection of OEM documentation confirming secured configuration of any wireless and or satellite interfaces. Confirm especially that there are no downgrades of communications protocols possible.
 <<<
 
 [REQUIREMENT]
@@ -1509,13 +1509,13 @@ CRITICALITY: >>>
 Low
 <<<
 STATEMENT: >>>
-Vendors must ensure that their authentication mechanism is protected against brute force attacks. This includes ensuring that any password storage functions provide sufficient security through the use of industry best practice hashing mechanisms (such as BCrypt), as well as providing limits on access to sensitive services.
+OEMs must ensure that their authentication mechanism is protected against brute force attacks. This includes ensuring that any password storage functions provide sufficient security through the use of industry best practice hashing mechanisms (such as BCrypt), as well as providing limits on access to sensitive services.
 <<<
 PUB_REFS: >>>
 UL 1376 2.8 Brute force protection: Implement protection against brute force attacks
 <<<
 VERIFICATION: >>>
-Inspection of 3rd party documentation of a demonstration by the vendor that asserts that hash cracking the stored passwords (hashes) is too expensive to be practical..
+Inspection of 3rd party documentation of a demonstration by the OEM that asserts that hash cracking the stored passwords (hashes) is too expensive to be practical..
 <<<
 
 [REQUIREMENT]
@@ -1527,7 +1527,7 @@ CRITICALITY: >>>
 High
 <<<
 STATEMENT: >>>
-The vendor shall have a process for remediating flaws in deployed telematics devices and backend systems.
+The OEM shall have a process for remediating flaws in deployed telematics devices and backend systems.
 
 In the case of telematics devices, firmware update capabilities are important to be able to remediate all flaws that could be located in the device.
 <<<
@@ -1545,9 +1545,9 @@ NIST 800-53 r5 SI-2 (5) - FLAW REMEDIATION | AUTOMATIC SOFTWARE AND FIRMWARE UPD
 Install [Assignment: organization-defined security-relevant software and firmware updates] automatically to [Assignment: organization-defined system components].
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing their flaw remediation process for backend systems.
+Inspection of OEM-supplied documentation detailing their flaw remediation process for backend systems.
 
-Inspection of vendor-supplied documentation detailing the distribution and installation of new firmware, taking note of any responsibilities the carrier has. Ideally, firmware upgrades should require minimal effort on part of the carrier and automated by the vendor.
+Inspection of OEM-supplied documentation detailing the distribution and installation of new firmware, taking note of any responsibilities the carrier has. Ideally, firmware upgrades should require minimal effort on part of the carrier and automated by the OEM.
 <<<
 
 [REQUIREMENT]
@@ -1559,7 +1559,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor shall implement/deploy secure over the air update systems including assurances of integrity&authenticity. Also rollback protections and a means of denying the use of old potentially compromised signing keys.
+The OEM shall implement/deploy secure over the air update systems including assurances of integrity&authenticity. Also rollback protections and a means of denying the use of old potentially compromised signing keys.
 <<<
 PUB_REFS: >>>
 FASTR Connectivity and Cloud Work Group, 2018, SOTA recommendations
@@ -1581,7 +1581,7 @@ UL 1376 1.3 Software update authentication: Software updates must be cryptograph
 VERIFICATION: >>>
 Test that a) a modified update is rejected b) a modified update signed by any key other than the manufacturer is rejected c) a previous version cannot be reinstalled.
 
-If this facility is not in motor freight carrier control; then inspection of a report from the vendor showing tests of the above.
+If this facility is not in motor freight carrier control; then inspection of a report from the OEM showing tests of the above.
 <<<
 
 [REQUIREMENT]
@@ -1593,7 +1593,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor shall have a capability to mitigate vulnerabilities across all of the telematics devices, backend applications, and systems. Identified vulnerabilities are remediated or mitigated using suitable compensating controls on a timeline predicated by the severity of the vulnerability identified.
+The OEM shall have a capability to mitigate vulnerabilities across all of the telematics devices, backend applications, and systems. Identified vulnerabilities are remediated or mitigated using suitable compensating controls on a timeline predicated by the severity of the vulnerability identified.
 <<<
 PUB_REFS: >>>
 NIST 800-53 r5 SI-2 - FLAW REMEDIATION
@@ -1614,7 +1614,7 @@ CTIA CCTPID 5.5 Patch Management
 FMCSA GDL 8 Decide early who is in charge of creating, implementing and maintaining software/firmware updates for a device when a vulnerability emerges and ensure these guidelines are met.
 <<<
 VERIFICATION: >>>
-Inspection of vendor supplied documentation detailing the methods used to update software components across vendor’s infrastructure. Look for evidence of automation in deployment of patches.
+Inspection of OEM supplied documentation detailing the methods used to update software components across OEM’s infrastructure. Look for evidence of automation in deployment of patches.
 <<<
 
 [REQUIREMENT]
@@ -1628,7 +1628,7 @@ Medium
 STATEMENT: >>>
 Identified vulnerabilities are remediated or mitigated using suitable compensating controls on a timeline predicated by the severity of the vulnerability identified. Taking no longer than the following elapsed times: high in 30d, moderate in 90d and low in 180d.
 
-Vendors shall provide a document that defines vulnerabilities severities (e.g. CVSS). Negotiation of mutually aggregable exceptions to the remediation timelines is acceptable to compensate for cases where the complexity of remediation or mitigations of the vulnerability is prohibitively expensive to execute in the prescribed timeline. In general, the timelines of remediation can be agreed -to in a SLA.
+OEMs shall provide a document that defines vulnerabilities severities (e.g. CVSS). Negotiation of mutually aggregable exceptions to the remediation timelines is acceptable to compensate for cases where the complexity of remediation or mitigations of the vulnerability is prohibitively expensive to execute in the prescribed timeline. In general, the timelines of remediation can be agreed -to in a SLA.
 <<<
 PUB_REFS: >>>
 NIST 800-53 r5 SI-2 - FLAW REMEDIATION
@@ -1651,7 +1651,7 @@ UL 1376 3.5 Software free from known vulnerabilities: System software should be 
 UL 1376 7.1 Documented patch / update process: A documented process for the distribution of patches/updates must be maintained
 <<<
 VERIFICATION: >>>
-Inspection of vendor supplied documentation detailing the methods used to update software components across vendor’s infrastructure. Ensure that it is possible to remediate a vulnerability with an identified high severity (30d).
+Inspection of OEM supplied documentation detailing the methods used to update software components across OEM’s infrastructure. Ensure that it is possible to remediate a vulnerability with an identified high severity (30d).
 <<<
 
 [REQUIREMENT]
@@ -1663,10 +1663,10 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor shall use digitally signed software on telematics devices and prohibit execution of unsigned or invalidly signed software.
+The OEM shall use digitally signed software on telematics devices and prohibit execution of unsigned or invalidly signed software.
 <<<
 COMMENT: >>>
-Note may just want to make this one vendor shall utilize digitally signed firmware
+Note may just want to make this one OEM shall utilize digitally signed firmware
 <<<
 PUB_REFS: >>>
 NIST 800-53 r5 SI-3 - MALICIOUS CODE PROTECTION
@@ -1686,7 +1686,7 @@ CTIA CCTPID 3.6 Software Upgrades CTIA CCTPID 5.6 Software Upgrades
 FMCSA GDL 30 If the device can be updated from local media (USB, SD cards, etc.), make sure the updates are digitally-signed and authorization is required
 <<<
 VERIFICATION: >>>
-Inspection of vendor documentation demonstrating that only cryptographically signed software is allowed to be executed/run on telematics devices. Ensure that signature verification is performed before load/execute/run and not solely at time of installation.
+Inspection of OEM documentation demonstrating that only cryptographically signed software is allowed to be executed/run on telematics devices. Ensure that signature verification is performed before load/execute/run and not solely at time of installation.
 <<<
 
 [REQUIREMENT]
@@ -1698,7 +1698,7 @@ CRITICALITY: >>>
 High
 <<<
 STATEMENT: >>>
-The vendor shall utilize a boot verification process built with (asymmetric) cryptographic digital signatures and implemented such that the public key used for verification or the hash of the public key used for verification is protected from being tampered on the device.
+The OEM shall utilize a boot verification process built with (asymmetric) cryptographic digital signatures and implemented such that the public key used for verification or the hash of the public key used for verification is protected from being tampered on the device.
 <<<
 COMMENT: >>>
 Secure boot underpins the access control which protects the vehicle networks
@@ -1720,7 +1720,7 @@ NIST 800-53 r5 SI-7 (15) - SOFTWARE, FIRMWARE, AND INFORMATION INTEGRITY | CODE 
 Implement cryptographic mechanisms to authenticate the following software or firmware components prior to installation: [Assignment: organization-defined software or firmware components].
 <<<
 VERIFICATION: >>>
-Inspection of a 3rd party implementation review report or a demonstration by the vendor that asserts the use of cryptographic protections for the integrity of the boot process. The cryptographic protections must employ asymmetric industry standard algorithms. (rationale: cryptography must be validated by experts in the subject)
+Inspection of a 3rd party implementation review report or a demonstration by the OEM that asserts the use of cryptographic protections for the integrity of the boot process. The cryptographic protections must employ asymmetric industry standard algorithms. (rationale: cryptography must be validated by experts in the subject)
 <<<
 
 [REQUIREMENT]
@@ -1732,7 +1732,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-Vendors shall implement a hardware based root of trust for boot authentication of the device.
+OEMs shall implement a hardware based root of trust for boot authentication of the device.
 <<<
 PUB_REFS: >>>
 UL 1376 1.5 Hardware root of trust: Device implements a hardware based root of trust for updates and boot authentication
@@ -1740,7 +1740,7 @@ UL 1376 1.5 Hardware root of trust: Device implements a hardware based root of t
 SAE J3101 9.1 Authenticated Boot
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing the implementation of a hardware based root of trust for secure boot of the device.
+Inspection of OEM-supplied documentation detailing the implementation of a hardware based root of trust for secure boot of the device.
 <<<
 
 [REQUIREMENT]
@@ -1752,7 +1752,7 @@ CRITICALITY: >>>
 Low
 <<<
 STATEMENT: >>>
-The vendor shall provide a means (and document the process) for customers to verify the firmware in their devices.
+The OEM shall provide a means (and document the process) for customers to verify the firmware in their devices.
 <<<
 COMMENT: >>>
 Is a rare feature to find deployed and is nice-to-have over and above secure boot
@@ -1768,7 +1768,7 @@ NIST 800-53 r5 SC-3 - SECURITY FUNCTION ISOLATION
 Isolate security functions from nonsecurity functions
 <<<
 VERIFICATION: >>>
-Inspection of vendor documentation detailing the process of verifying the firmware on a device. Ensure that these steps can be executed by your (carrier) staff to gain your own assurance of device firmware state.
+Inspection of OEM documentation detailing the process of verifying the firmware on a device. Ensure that these steps can be executed by your (carrier) staff to gain your own assurance of device firmware state.
 <<<
 
 [REQUIREMENT]
@@ -1780,7 +1780,7 @@ CRITICALITY: >>>
 High
 <<<
 STATEMENT: >>>
-The vendor shall utilize an array of code safety features across the entire collection of executables in its devices: ASLR, DEP, CFI, Stack Guards, Fortification, and RELRO. Unless that code safety feature is not applicable on the system architecture, in which case it should be noted.
+The OEM shall utilize an array of code safety features across the entire collection of executables in its devices: ASLR, DEP, CFI, Stack Guards, Fortification, and RELRO. Unless that code safety feature is not applicable on the system architecture, in which case it should be noted.
 <<<
 COMMENT: >>>
 Without any of these, exploitation is trivial
@@ -1796,7 +1796,7 @@ FMCSA GDL 22 Leverage security controls built in to the operating system
 OWASP E1 – Buffer and Stack Overflow Protection
 <<<
 VERIFICATION: >>>
-Inspection of a 3rd party implementation review report or a demonstration by the vendor that asserts the presence of an array of code safety features (such as those listed in the requirement SII-070 or at the CITL safety features list).
+Inspection of a 3rd party implementation review report or a demonstration by the OEM that asserts the presence of an array of code safety features (such as those listed in the requirement SII-070 or at the CITL safety features list).
 
 (rationale: measuring the presence of these mitigations requires binary analysis by experts in the subject)
 <<<
@@ -1810,7 +1810,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor shall use the techniques of sanitizing/filtering inputs, segmenting memory spaces of input parsers from other execution and/or using provably correct or memory safe languages for input processing.
+The OEM shall use the techniques of sanitizing/filtering inputs, segmenting memory spaces of input parsers from other execution and/or using provably correct or memory safe languages for input processing.
 <<<
 PUB_REFS: >>>
 FMCSA GDL 26 Filter input to any device or interface that gets digitally processed.
@@ -1820,7 +1820,7 @@ OWASP E1 – Buffer and Stack Overflow Protection
 OWASP E2 - Injection Prevention
 <<<
 VERIFICATION: >>>
-Inspection of vendor documentation detailing the filtering performed on inputs to the software.
+Inspection of OEM documentation detailing the filtering performed on inputs to the software.
 <<<
 
 [REQUIREMENT]
@@ -1832,7 +1832,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor shall design security components that fail-secure to protect integrity of systems and data.
+The OEM shall design security components that fail-secure to protect integrity of systems and data.
 <<<
 PUB_REFS: >>>
 NIST 800-53 r5 SI-17 - FAIL-SAFE PROCEDURES
@@ -1846,7 +1846,7 @@ CTIA CCTPID 5.17 Design-In Features “device was designed to fail secure”
 FMCSA GDL 4 Security problems will happen; fail safely
 <<<
 VERIFICATION: >>>
-Inspection of vendor documentation detailing how software components and the systems are designed to fail-secure.
+Inspection of OEM documentation detailing how software components and the systems are designed to fail-secure.
 <<<
 
 [REQUIREMENT]
@@ -1858,7 +1858,7 @@ CRITICALITY: >>>
 Low
 <<<
 STATEMENT: >>>
-The vendor shall utilize protective mechanisms to protect components from unauthorized runtime/volatile modification of code.
+The OEM shall utilize protective mechanisms to protect components from unauthorized runtime/volatile modification of code.
 <<<
 COMMENT: >>>
 Not well defined enough to make this of critical importance to TSPs or carriers
@@ -1875,7 +1875,7 @@ c. Configure malicious code protection mechanisms to:
 d. Address the receipt of false positives during malicious code detection and eradication and the resulting potential impact on the availability of the system.
 <<<
 VERIFICATION: >>>
-Inspection of vendor documentation detailing the operation of software protections for prevent the runtime modification of code.
+Inspection of OEM documentation detailing the operation of software protections for prevent the runtime modification of code.
 <<<
 
 [REQUIREMENT]
@@ -1887,7 +1887,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor shall maintain a responsible disclosure program that allows for vulnerabilities discovered in the system (device, mobile app or backend) by researchers, and other external entities to be reported, tracked and mitigated.
+The OEM shall maintain a responsible disclosure program that allows for vulnerabilities discovered in the system (device, mobile app or backend) by researchers, and other external entities to be reported, tracked and mitigated.
 
 Vulnerability programs should include sufficient legal provisions to provide for a “Legal Safe Harbor” for researchers.
 <<<
@@ -1913,9 +1913,9 @@ DHS BOD 20-01 Required Action, Develop and Publish a Vulnerability Disclosure Po
 DHS BOD 20-01 Required Action, Vulnerability Disclosure Handling Procedures
 <<<
 VERIFICATION: >>>
-Demonstration, by vendor, that disclosure instructions are published on their public website and are readily accessible.
+Demonstration, by OEM, that disclosure instructions are published on their public website and are readily accessible.
 
-Demonstration, by vendor, of an active security@[vendor domain] email, that will provide a known contact point for disclosure.
+Demonstration, by OEM, of an active security@[OEM domain] email, that will provide a known contact point for disclosure.
 <<<
 
 [REQUIREMENT]
@@ -1927,7 +1927,7 @@ CRITICALITY: >>>
 High
 <<<
 STATEMENT: >>>
-The vendor must monitor information systems for attack and unauthorized access including employing automated analysis tools
+The OEM must monitor information systems for attack and unauthorized access including employing automated analysis tools
 <<<
 COMMENT: >>>
 Regardless of how secure a system might be it will eventually be breached; therefore monitoring is of high criticality
@@ -1941,7 +1941,7 @@ a. Monitor the system to detect: […]
 FMCSA GDL 28 Enable security monitoring of the telematics system(s) using native tools.
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation which asserts the use and active monitoring of their systems for intrusion.
+Inspection of OEM-supplied documentation which asserts the use and active monitoring of their systems for intrusion.
 <<<
 
 [REQUIREMENT]
@@ -1953,7 +1953,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor conducts regular vulnerability scans of operating environment to verify software components in use have been patched according to remediation SLAs.
+The OEM conducts regular vulnerability scans of operating environment to verify software components in use have been patched according to remediation SLAs.
 <<<
 PUB_REFS: >>>
 NIST 800-53 r5 RA-5 – VULNERABILITY MONITORING AND SCANNING
@@ -1972,7 +1972,7 @@ f. Employ vulnerability monitoring tools that include the capability to readily 
 OWASP E10 – Third Party Code and Components
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documents stating the frequency, method, and scope of vulnerability scans.
+Inspection of OEM-supplied documents stating the frequency, method, and scope of vulnerability scans.
 <<<
 
 [REQUIREMENT]
@@ -1984,7 +1984,7 @@ CRITICALITY: >>>
 Low
 <<<
 STATEMENT: >>>
-The vendor shall have a vulnerability management process that includes steps to triage any found vulnerabilities and plan remediation.
+The OEM shall have a vulnerability management process that includes steps to triage any found vulnerabilities and plan remediation.
 <<<
 COMMENT: >>>
 This requirement, if satisfied, shows process maturity but is nice-to-have over and above the previous requirements in this category
@@ -2004,7 +2004,7 @@ CAIQ CCC-03.3 Are there policies and procedures in place to triage and remedy re
 FMCSA GDL 8 Decide early who is in charge of creating, implementing and maintaining software/firmware updates for a device when a vulnerability emerges, and ensure these guidelines are met
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation describing their triage process.
+Inspection of OEM-supplied documentation describing their triage process.
 <<<
 
 [REQUIREMENT]
@@ -2016,7 +2016,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor shall verify code and best practice standards prior to deployment including:
+The OEM shall verify code and best practice standards prior to deployment including:
 
 Static Code Analysis / Static Application Security Testing (SCA/SAST)
 
@@ -2034,7 +2034,7 @@ FMCSA GDL 2 Follow secure coding best practices.
 OWASP E10 – Third Party Code and Components
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing their release process and quality controls.
+Inspection of OEM-supplied documentation detailing their release process and quality controls.
 
 Ensure that the process ensures that code is subject to static analysis prior to production release.
 <<<
@@ -2048,7 +2048,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor shall implement ongoing monitoring and protection against malicious code in production using a well governed process that addresses all entry and exit points in the system.
+The OEM shall implement ongoing monitoring and protection against malicious code in production using a well governed process that addresses all entry and exit points in the system.
 <<<
 COMMENT: >>>
 e.g. whitelisting, anti-malware scanning, cryptographic protections
@@ -2067,7 +2067,7 @@ d. Address the receipt of false positives during malicious code detection and er
 FMCSA GDL 28 Enable security monitoring of the telematics system(s) using native tools
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing the methods used to protect systems and devices from malicious code.
+Inspection of OEM-supplied documentation detailing the methods used to protect systems and devices from malicious code.
 <<<
 
 [REQUIREMENT]
@@ -2079,7 +2079,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor shall verify code according to best-practice coding standards
+The OEM shall verify code according to best-practice coding standards
 <<<
 PUB_REFS: >>>
 NIST 800-53 r5 SA-15 (7) - DEVELOPMENT PROCESS, STANDARDS, AND TOOLS | AUTOMATED VULNERABILITY ANALYSIS
@@ -2090,9 +2090,9 @@ Require the developer of the system, system component, or system service [Assign
 (d) Deliver the outputs of the tools and results of the analysis to [Assignment: organization-defined personnel or roles].
 <<<
 VERIFICATION: >>>
-Inspection of vendor-supplied documentation detailing the software development processes of the vendor.
+Inspection of OEM-supplied documentation detailing the software development processes of the OEM.
 
-Ensure that the vendor has coding standards that encourage secure code development.
+Ensure that the OEM has coding standards that encourage secure code development.
 <<<
 
 [REQUIREMENT]
@@ -2104,7 +2104,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor shall actively monitor resources such as NIST Common Vulnerabilities and Exposures (CVE), Bugtraq, for security alerts and advisories related to the telematics system’s components
+The OEM shall actively monitor resources such as NIST Common Vulnerabilities and Exposures (CVE), Bugtraq, for security alerts and advisories related to the telematics system’s components
 <<<
 PUB_REFS: >>>
 NIST 800-53 r5 SI-5 - SECURITY ALERTS, ADVISORIES, AND DIRECTIVES
@@ -2116,7 +2116,7 @@ d. Implement security directives in accordance with established time frames, or 
 FMCSA GDL 8 Decide early who is in charge of creating, implementing, and maintaining software/firmware updates for a device when a vulnerability emerges, and ensure these guidelines are met.
 <<<
 VERIFICATION: >>>
-Inspection of vendor process documentation detailing whether alerts, advisories, and directives are monitored and how these items are consumed e.g. email, ticketing system.
+Inspection of OEM process documentation detailing whether alerts, advisories, and directives are monitored and how these items are consumed e.g. email, ticketing system.
 <<<
 
 [REQUIREMENT]
@@ -2128,7 +2128,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-The vendor shall notify their customers of any vulnerabilities discovered in the telematics systems components via monitoring or vulnerability disclosure programs. The notification to customers will happen in a timely manner.
+The OEM shall notify their customers of any vulnerabilities discovered in the telematics systems components via monitoring or vulnerability disclosure programs. The notification to customers will happen in a timely manner.
 <<<
 PUB_REFS: >>>
 NIST 800-53 r5 SI-5 - SECURITY ALERTS, ADVISORIES, AND DIRECTIVES
@@ -2138,7 +2138,7 @@ c. Disseminate security alerts, advisories, and directives to: [Selection (one o
 d. Implement security directives in accordance with established time frames, or notify the issuing organization of the degree of noncompliance.
 <<<
 VERIFICATION: >>>
-Inspection of vendor process documentation detailing how customers are notified. Confirm that the timelines stated in the vendors notification procedures are acceptable.
+Inspection of OEM process documentation detailing how customers are notified. Confirm that the timelines stated in the OEM's notification procedures are acceptable.
 <<<
 
 [REQUIREMENT]
@@ -2183,7 +2183,7 @@ b. Compliance should be periodically assessed by the QA, Internal Audit, or Info
 c. Compliance remediation activities should be periodically reviewed to ensure teams are making appropriate progress, as well as assuring remediation strategies will be effective in achieving compliance.
 <<<
 VERIFICATION: >>>
-·         Inspection of vendor documentation detailing:
+·         Inspection of OEM documentation detailing:
 
 System Development Lifecycle
 
@@ -2201,7 +2201,7 @@ CRITICALITY: >>>
 Low
 <<<
 STATEMENT: >>>
-The vendor’s software will have software resiliency measures included that will slow the progress of tampering and reverse engineering efforts.
+The OEM’s software will have software resiliency measures included that will slow the progress of tampering and reverse engineering efforts.
 <<<
 COMMENT: >>>
 This is a nice-to-have. Mature solutions that process sensitive information in devices that could be in the hands of attackers are expected to have these protections; however, allowances should be made for products to focus on the necessary security controls first, for which these resiliency requirements are not a substitute
@@ -2250,7 +2250,7 @@ OWASP MASVS MSTG‑RESILIENCE‑13
 a. As a defense in depth, next to having solid hardening of the communicating parties, application level payload encryption can be applied to further impede eavesdropping.
 <<<
 VERIFICATION: >>>
-Inspection of 3rd party documentation or a demonstration by the vendor that asserts the presence of anti-reverse-engineering in the vendor software. Ideally executed following the testing steps detailed in the OWASP MSTG 'Android Anti-Reversing Defenses' or 'iOS Anti-Reversing Defenses' sections
+Inspection of 3rd party documentation or a demonstration by the OEM that asserts the presence of anti-reverse-engineering in the OEM software. Ideally executed following the testing steps detailed in the OWASP MSTG 'Android Anti-Reversing Defenses' or 'iOS Anti-Reversing Defenses' sections
 <<<
 
 [REQUIREMENT]
@@ -2262,14 +2262,15 @@ CRITICALITY: >>>
 Low
 <<<
 STATEMENT: >>>
-The vendor shall participate in a cybersecurity information sharing and analysis group in the heavy vehicle industry
+The OEM shall participate in a cybersecurity information sharing and analysis group in the heavy vehicle industry
 <<<
 PUB_REFS: >>>
 FMCSA GDL 13 Share cybersecurity information with heavy vehicle the industry.
 <<<
 VERIFICATION: >>>
-Inspection of vendor process documentation confirming participation in information sharing group.
+Inspection of OEM process documentation confirming participation in information sharing group.
 <<<
 
 [[/SECTION]]
+
 
