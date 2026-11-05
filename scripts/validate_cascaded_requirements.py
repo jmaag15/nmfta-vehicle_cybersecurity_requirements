@@ -9,8 +9,8 @@ Validates that:
    - Cloud Component (60 requirements)
    - Mobile App Component (50 requirements)
    cascade correctly in nmfta-vehicle_cybersecurity_requirements (Class 0 Telematics)
-   and have identical parent/cascaded statement text, criticality, and metadata
-   relative to the baseline reference.
+   and have identical cascaded statement text and criticality to their ultimate
+   parent requirements, parsed through StrictDoc.
 
 2. All 34 gateway security requirements (AGW-S-*, CGW-S-*, J1939GW-S-*, NGW-S-*)
    in nmfta-vehicle_cybersecurity_requirements (requirements/common/vehicle_gateway_controls.sdoc
@@ -31,6 +31,17 @@ import re
 import sys
 from typing import Dict, List, Optional, Tuple
 
+from strictdoc.api import (
+    ALL_EDGES,
+    GraphLinkType,
+    Parallelizer,
+    ProjectConfigLoader,
+    SDocDocumentIterator,
+    SDocNode,
+    TraceabilityIndex,
+    TraceabilityIndexBuilder,
+)
+
 
 def normalize_whitespace(text: Optional[str]) -> str:
     """Normalize whitespace and newlines for robust semantic comparison."""
@@ -39,79 +50,45 @@ def normalize_whitespace(text: Optional[str]) -> str:
     return re.sub(r"\s+", " ", text.strip())
 
 
-def parse_sdoc_requirements(file_path: str) -> Dict[str, dict]:
-    """Parse requirements from an SDoc file using regex."""
-    if not os.path.exists(file_path):
-        raise FileNotFoundError(f"File not found: {file_path}")
+def parse_strictdoc_requirements(
+    input_path: str,
+) -> Tuple[TraceabilityIndex, Dict[str, dict]]:
+    """Parse an SDoc project and its relations using StrictDoc."""
+    if not os.path.exists(input_path):
+        raise FileNotFoundError(f"File not found: {input_path}")
 
-    with open(file_path, "r", encoding="utf-8") as f:
-        content = f.read()
-
-    chunks = re.split(r"\n(?=\[REQUIREMENT\]\n)", content)
+    project_config = ProjectConfigLoader.load(input_path=input_path)
+    traceability_index = TraceabilityIndexBuilder.create(
+        project_config=project_config,
+        parallelizer=Parallelizer.create(False),
+    )
     requirements: Dict[str, dict] = {}
 
-    for chunk in chunks:
-        if not chunk.startswith("[REQUIREMENT]"):
-            continue
-
-        uid_match = re.search(r"^UID:\s*([^\n]+)", chunk, re.MULTILINE)
-        if not uid_match:
-            continue
-        uid = uid_match.group(1).strip()
-
-        crit_match = re.search(
-            r"^CRITICALITY:\s*(?:>>>\s*\n)?([^\n<]+)", chunk, re.MULTILINE
-        )
-        crit = crit_match.group(1).strip() if crit_match else None
-
-        title_match = re.search(
-            r"^TITLE:\s*(?:>>>\s*\n)?([^\n<]+)", chunk, re.MULTILINE
-        )
-        title = title_match.group(1).strip() if title_match else None
-
-        stmt = None
-        stmt_multi = re.search(
-            r"^STATEMENT:\s*>>>\n(.*?)\n<<<", chunk, re.MULTILINE | re.DOTALL
-        )
-        if stmt_multi:
-            stmt = stmt_multi.group(1).strip()
-        else:
-            stmt_single = re.search(r"^STATEMENT:\s*([^\n>]+)", chunk, re.MULTILINE)
-            if stmt_single:
-                stmt = stmt_single.group(1).strip()
-
-        verification = None
-        verif_multi = re.search(
-            r"^VERIFICATION:\s*>>>\n(.*?)\n<<<", chunk, re.MULTILINE | re.DOTALL
-        )
-        if verif_multi:
-            verification = verif_multi.group(1).strip()
-        else:
-            verif_single = re.search(
-                r"^VERIFICATION:\s*([^\n>]+)", chunk, re.MULTILINE
+    for document in traceability_index.document_tree.document_list:
+        iterator = SDocDocumentIterator(document)
+        for node, _ in iterator.all_content(print_fragments=False):
+            if not isinstance(node, SDocNode) or node.node_type != "REQUIREMENT":
+                continue
+            uid = node.reserved_uid
+            if not uid:
+                continue
+            parents = traceability_index.graph_database.get_link_values(
+                link_type=GraphLinkType.NODE_TO_PARENT_NODES,
+                lhs_node=node,
+                edge=ALL_EDGES,
             )
-            if verif_single:
-                verification = verif_single.group(1).strip()
+            requirements[uid] = {
+                "uid": uid,
+                "node": node,
+                "source_file": node.ng_document_reference._document._tx_filename,
+                "title": node.get_meta_field_value_by_title("TITLE"),
+                "criticality": node.get_meta_field_value_by_title("CRITICALITY"),
+                "statement": node.get_meta_field_value_by_title("STATEMENT"),
+                "verification": node.get_meta_field_value_by_title("VERIFICATION"),
+                "parents": [parent.reserved_uid for parent in parents],
+            }
 
-        parents = []
-        rel_block = re.search(r"RELATIONS:\n(.*?)(?=\n\[|\Z)", chunk, re.DOTALL)
-        if rel_block:
-            p_matches = re.findall(
-                r"-\s*TYPE:\s*Parent\s*\n\s*VALUE:\s*([^\n]+)", rel_block.group(1)
-            )
-            parents = [p.strip() for p in p_matches]
-
-        requirements[uid] = {
-            "uid": uid,
-            "title": title,
-            "criticality": crit,
-            "statement": stmt,
-            "verification": verification,
-            "parents": parents,
-            "raw": chunk,
-        }
-
-    return requirements
+    return traceability_index, requirements
 
 
 class RequirementValidator:
@@ -127,6 +104,7 @@ class RequirementValidator:
         self.tsrm_dir = os.path.abspath(tsrm_dir) if tsrm_dir else None
         self.vcr_exp_dir = os.path.abspath(vcr_exp_dir) if vcr_exp_dir else None
 
+        self.vcr_traceability_index: Optional[TraceabilityIndex] = None
         self.vcr_requirements: Dict[str, dict] = {}
 
     def load_vcr_tree(self) -> None:
@@ -135,15 +113,14 @@ class RequirementValidator:
         if not os.path.exists(req_dir):
             raise FileNotFoundError(f"requirements/ directory not found in {self.vcr_dir}")
 
-        count = 0
-        for root, _, files in os.walk(req_dir):
-            for file in files:
-                if file.endswith(".sdoc"):
-                    sdoc_path = os.path.join(root, file)
-                    reqs = parse_sdoc_requirements(sdoc_path)
-                    self.vcr_requirements.update(reqs)
-                    count += 1
-        print(f"Scanned {count} SDoc files in VCR tree ({len(self.vcr_requirements)} requirements loaded).")
+        self.vcr_traceability_index, self.vcr_requirements = parse_strictdoc_requirements(
+            self.vcr_dir
+        )
+        print(
+            f"Loaded {len(self.vcr_traceability_index.document_tree.document_list)} "
+            f"StrictDoc documents in VCR tree "
+            f"({len(self.vcr_requirements)} requirements loaded)."
+        )
 
     def resolve_ancestor_metadata(
         self, uid: str
@@ -161,9 +138,17 @@ class RequirementValidator:
         stmt = node["statement"]
         ancestor_stmt = None
 
-        cur = node
-        while cur.get("parents"):
-            parent_uid = cur["parents"][0]
+        cur = node["node"]
+        while True:
+            parents = self.vcr_traceability_index.graph_database.get_link_values(
+                link_type=GraphLinkType.NODE_TO_PARENT_NODES,
+                lhs_node=cur,
+                edge=ALL_EDGES,
+            )
+            if not parents:
+                break
+            cur = next(iter(parents))
+            parent_uid = cur.reserved_uid
             parent_node = self.vcr_requirements.get(parent_uid)
             if not parent_node:
                 break
@@ -173,9 +158,30 @@ class RequirementValidator:
                 title = parent_node["title"]
             if parent_node["statement"]:
                 ancestor_stmt = parent_node["statement"]
-            cur = parent_node
 
         return crit, title, stmt, ancestor_stmt
+
+    def ultimate_parent(self, uid: str) -> Optional[dict]:
+        """Return the ultimate StrictDoc parent of a requirement."""
+        node = self.vcr_requirements.get(uid)
+        if not node:
+            return None
+
+        current = node["node"]
+        ultimate = node
+        while True:
+            parents = self.vcr_traceability_index.graph_database.get_link_values(
+                link_type=GraphLinkType.NODE_TO_PARENT_NODES,
+                lhs_node=current,
+                edge=ALL_EDGES,
+            )
+            if not parents:
+                return ultimate
+            current = next(iter(parents))
+            parent = self.vcr_requirements.get(current.reserved_uid)
+            if not parent:
+                return None
+            ultimate = parent
 
     def validate_from_baseline_json(self) -> List[str]:
         """Validate VCR against the hermetic reference_baselines.json snapshot."""
@@ -195,25 +201,30 @@ class RequirementValidator:
         print(f"Checking {len(telematics_baseline)} Telematics requirements from baseline snapshot...")
         for c0_uid, item in telematics_baseline.items():
             comp = item["component"]
-            expected_crit = item["criticality"]
-            expected_stmt = item["cascaded_statement"]
 
             if c0_uid not in self.vcr_requirements:
                 errors.append(f"[{comp}] Requirement {c0_uid} missing in VCR Class 0 specification")
                 continue
 
             v_crit, v_title, v_stmt, v_ancestor_stmt = self.resolve_ancestor_metadata(c0_uid)
+            ultimate_parent = self.ultimate_parent(c0_uid)
+            if not ultimate_parent:
+                errors.append(f"[{comp}] {c0_uid}: Ultimate parent requirement could not be resolved")
+                continue
+
+            expected_crit = ultimate_parent["criticality"]
+            expected_stmt = ultimate_parent["statement"]
 
             if normalize_whitespace(v_crit) != normalize_whitespace(expected_crit):
                 errors.append(
                     f"[{comp}] {c0_uid}: Criticality mismatch: "
-                    f"Baseline='{expected_crit}', VCR='{v_crit}'"
+                    f"Ultimate parent='{expected_crit}', VCR='{v_crit}'"
                 )
 
             if normalize_whitespace(v_ancestor_stmt) != normalize_whitespace(expected_stmt):
                 errors.append(
                     f"[{comp}] {c0_uid}: Cascaded parent statement mismatch:\n"
-                    f"  Expected : {expected_stmt[:120]}...\n"
+                    f"  Ultimate parent : {expected_stmt[:120] if expected_stmt else 'None'}...\n"
                     f"  VCR Resolved : {v_ancestor_stmt[:120] if v_ancestor_stmt else 'None'}..."
                 )
 
@@ -270,7 +281,7 @@ class RequirementValidator:
         if not os.path.exists(tsrm_master_file):
             return [f"TSRM master file missing: {tsrm_master_file}"]
 
-        tsrm_master = parse_sdoc_requirements(tsrm_master_file)
+        _, tsrm_requirements = parse_strictdoc_requirements(self.tsrm_dir)
         components = [
             ("Vehicle Connection", "_vehicle_connection_tsrm.sdoc"),
             ("Connectivity / Communications", "_connectivity_tsrm.sdoc"),
@@ -284,7 +295,11 @@ class RequirementValidator:
                 errors.append(f"TSRM component file missing: {comp_path}")
                 continue
 
-            comp_reqs = parse_sdoc_requirements(comp_path)
+            comp_reqs = {
+                uid: node
+                for uid, node in tsrm_requirements.items()
+                if os.path.abspath(node["source_file"]) == os.path.abspath(comp_path)
+            }
             print(f"Checking TSRM component: {comp_name} ({len(comp_reqs)} requirements)...")
 
             for uid, tsrm_node in comp_reqs.items():
@@ -298,11 +313,11 @@ class RequirementValidator:
                     continue
 
                 tsrm_parent_uid = tsrm_node["parents"][0]
-                if tsrm_parent_uid not in tsrm_master:
+                if tsrm_parent_uid not in tsrm_requirements:
                     errors.append(f"[{comp_name}] TSRM parent {tsrm_parent_uid} not found in TSRM master")
                     continue
 
-                tsrm_parent = tsrm_master[tsrm_parent_uid]
+                tsrm_parent = tsrm_requirements[tsrm_parent_uid]
                 tsrm_crit = tsrm_parent["criticality"]
                 tsrm_parent_stmt = tsrm_parent["statement"]
 
@@ -327,7 +342,12 @@ class RequirementValidator:
             errors.append(f"vcr-experiment gateways file missing: {gw_file}")
             return errors
 
-        exp_gw_reqs = parse_sdoc_requirements(gw_file)
+        _, vcr_exp_requirements = parse_strictdoc_requirements(self.vcr_exp_dir)
+        exp_gw_reqs = {
+            uid: node
+            for uid, node in vcr_exp_requirements.items()
+            if os.path.abspath(node["source_file"]) == os.path.abspath(gw_file)
+        }
         print(f"Checking Gateway requirements from vcr-experiment ({len(exp_gw_reqs)} requirements)...")
         for uid, exp_node in exp_gw_reqs.items():
             if uid not in self.vcr_requirements:
@@ -370,7 +390,7 @@ class RequirementValidator:
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Validate cascaded requirement text and criticalities against reference baseline."
+        description="Validate cascaded requirement text and criticalities using StrictDoc parent requirements."
     )
     parser.add_argument(
         "--vcr-dir",
