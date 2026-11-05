@@ -524,7 +524,7 @@ CRITICALITY: >>>
 Medium
 <<<
 STATEMENT: >>>
-Cryptographic modules used in the OEMs system shall be compliant with Federal Information Processing Standards (FIPS) 140-2: Level 1.
+Cryptographic modules used in the OEM's system shall be compliant with Federal Information Processing Standards (FIPS) 140-2: Level 1.
 <<<
 COMMENT: >>>
 e.g.
@@ -2138,7 +2138,7 @@ c. Disseminate security alerts, advisories, and directives to: [Selection (one o
 d. Implement security directives in accordance with established time frames, or notify the issuing organization of the degree of noncompliance.
 <<<
 VERIFICATION: >>>
-Inspection of OEM process documentation detailing how customers are notified. Confirm that the timelines stated in the OEMs notification procedures are acceptable.
+Inspection of OEM process documentation detailing how customers are notified. Confirm that the timelines stated in the OEM's notification procedures are acceptable.
 <<<
 
 [REQUIREMENT]
