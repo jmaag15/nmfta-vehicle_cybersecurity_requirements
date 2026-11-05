@@ -954,54 +954,6 @@ RELATIONS:
   ROLE: Refines
 
 [REQUIREMENT]
-UID: C3-VEH-AC-060
-STATUS: Draft
-TAGS: NEEDS_WORKING_GROUP_REVIEW
-STATEMENT: >>>
-Class 3 vehicle network interfaces SHALL satisfy requirement VEH-AC-060.
-<<<
-RELATIONS:
-- TYPE: Parent
-  VALUE: VEH-AC-060
-  ROLE: Refines
-
-[REQUIREMENT]
-UID: C3-VEH-AC-061
-STATUS: Draft
-TAGS: NEEDS_WORKING_GROUP_REVIEW
-STATEMENT: >>>
-Class 3 vehicle network interfaces SHALL satisfy requirement VEH-AC-061.
-<<<
-RELATIONS:
-- TYPE: Parent
-  VALUE: VEH-AC-061
-  ROLE: Refines
-
-[REQUIREMENT]
-UID: C3-VEH-AC-062
-STATUS: Draft
-TAGS: NEEDS_WORKING_GROUP_REVIEW
-STATEMENT: >>>
-Class 3 vehicle network interfaces SHALL satisfy requirement VEH-AC-062.
-<<<
-RELATIONS:
-- TYPE: Parent
-  VALUE: VEH-AC-062
-  ROLE: Refines
-
-[REQUIREMENT]
-UID: C3-VEH-AC-063
-STATUS: Draft
-TAGS: NEEDS_WORKING_GROUP_REVIEW
-STATEMENT: >>>
-Class 3 vehicle network interfaces SHALL satisfy requirement VEH-AC-063.
-<<<
-RELATIONS:
-- TYPE: Parent
-  VALUE: VEH-AC-063
-  ROLE: Refines
-
-[REQUIREMENT]
 UID: C3-VEH-AC-080
 STATUS: Draft
 TAGS: NEEDS_WORKING_GROUP_REVIEW
