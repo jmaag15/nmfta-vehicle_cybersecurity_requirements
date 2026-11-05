@@ -149,9 +149,9 @@ Modern commercial motor vehicles frequently deploy **multiple distinct telematic
 
 Because each deployed telematics system introduces network interfaces and potential attack vectors into the vehicle, **fleets and purchasers must evaluate ALL telematics systems installed on the vehicle**. 
 
-When issuing supplier questionnaires or evaluating vendor compliance:
+When issuing supplier questionnaires or evaluating OEM compliance:
 - Procuring fleets MUST ensure that questionnaire recipients complete responses for **ALL** telematics systems present on or integrated with the vehicle.
-- A vendor or supplier providing multiple telematics subsystems must submit separate questionnaire responses for each individual system.
+- A OEM or supplier providing multiple telematics subsystems must submit separate questionnaire responses for each individual system.
 - An assessment of only one system (e.g., the primary ELD) does not confer cybersecurity assurance to other co-existing telematics systems (e.g., powertrain or trailer telematics).
 <<<
 
@@ -186,3 +186,4 @@ The authors also acknowledge the contributions of the NMFTA Request for Proposal
 <<<
 
 [[/SECTION]]
+
