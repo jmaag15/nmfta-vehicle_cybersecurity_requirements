@@ -1433,7 +1433,7 @@ CRITICALITY: >>>
 High
 <<<
 STATEMENT: >>>
-The vendor’s system shall provide a means to download unstructured customer data in an industry-standard format (Open Telematics API). This download will occur over secured communication protocols.
+The vendor’s system shall provide a means to download unstructured customer data in an industry-standard format. This download will occur over secured communication protocols.
 <<<
 COMMENT: >>>
 Customer data is business critical and access is required
