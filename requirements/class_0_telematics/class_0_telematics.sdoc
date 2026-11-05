@@ -30,7 +30,7 @@ Instructions for Preparing and Responding to Questionnaires:
   - *Class 0 - Connectivity*
   - *Class 0 - Cloud Back-end*
   - *Class 0 - Mobile App*
-- **Distributed Responsibilities**: Vendors, suppliers, and procurement teams should route the respective component questionnaires to the responsible engineering teams (e.g., hardware/firmware engineers for Vehicle Connection, mobile developers for the Mobile App, cloud DevOps for the Back-End).
+- **Distributed Responsibilities**: OEMs, suppliers, and procurement teams should route the respective component questionnaires to the responsible engineering teams (e.g., hardware/firmware engineers for Vehicle Connection, mobile developers for the Mobile App, cloud DevOps for the Back-End).
 <<<
 
 [[SECTION]]
@@ -2352,3 +2352,4 @@ RELATIONS:
   ROLE: Refines
 
 [[/SECTION]]
+
