@@ -802,8 +802,12 @@ Frequency of reviews and updates to the system security architecture
 
 [REQUIREMENT]
 UID: P-030
-CATEGORY: Planning
-CRITICALITY: High
+CATEGORY: >>>
+Planning
+<<<
+CRITICALITY: >>>
+High
+<<<
 STATEMENT: >>>
 The vendor shall provide interfaces to their backend using the Open Telematics API -- enabling carriers to have failover to other providers to avoid interruptions due to single point of failure in provider telematics services.
 <<<
